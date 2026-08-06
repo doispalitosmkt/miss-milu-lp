@@ -1,0 +1,15 @@
+# Material fonte pesado / de trabalho (mantido localmente, fora do git)
+_fonte/
+
+# Deploy / tooling local
+.deploy/
+.claude/settings.local.json
+
+# Sistema operacional
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Arquivos temporarios do Office
+~$*
