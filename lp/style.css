@@ -173,15 +173,17 @@ textarea:focus-visible {
 }
 
 .header-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   min-height: 86px;
   align-items: center;
-  justify-content: space-between;
   gap: 28px;
 }
 
 .logo {
   display: block;
+  grid-column: 2;
+  justify-self: center;
   width: 210px;
 }
 
@@ -190,14 +192,10 @@ textarea:focus-visible {
   height: auto;
 }
 
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
 .header-tel {
   display: inline-flex;
+  grid-column: 1;
+  justify-self: start;
   align-items: center;
   gap: 10px;
   color: var(--navy);
@@ -214,6 +212,8 @@ textarea:focus-visible {
 
 .header-cta {
   display: inline-flex;
+  grid-column: 3;
+  justify-self: end;
   min-height: 46px;
   align-items: center;
   justify-content: center;
@@ -1957,17 +1957,21 @@ body.capture-mode .faq-header {
   }
 
   .logo {
-    width: 154px;
+    width: 128px;
   }
 
   .header-tel {
     display: none;
   }
 
+  .header-inner {
+    gap: 14px;
+  }
+
   .header-cta {
     min-height: 46px;
-    padding: 0 14px;
-    font-size: 13px;
+    padding: 0 12px;
+    font-size: 12px;
   }
 
   .hero {
@@ -2325,12 +2329,12 @@ body.capture-mode .faq-header {
   }
 
   .logo {
-    width: 136px;
+    width: 116px;
   }
 
   .header-cta {
     max-width: 132px;
-    padding: 0 11px;
+    padding: 0 10px;
     text-align: center;
   }
 
