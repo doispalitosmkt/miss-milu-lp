@@ -641,7 +641,7 @@
 
   if (!track || !carousel || !lightbox || !lightboxImg) return;
 
-  var tones = ['#EEDDD6', '#DDE7EB', '#E5E1D2', '#DCE5DC', '#E8DDE4', '#E9DFD3'];
+  var tones = ['#F4DDD1', '#F1D9CE', '#F6E1D5', '#EFD7CB', '#F3DCD0', '#F7E3D8'];
   var activeCategory = '01-corporativo';
   var activeIndex = 0;
   var lightboxIndex = 0;

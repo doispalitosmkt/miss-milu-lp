@@ -1,14 +1,16 @@
 :root {
-  --rose: #EE686C;
-  --rose-dark: #D9525C;
-  --rose-soft: #F8DDDC;
-  --navy: #193456;
-  --navy-deep: #10243E;
-  --cream: #F7F2EA;
-  --paper: #FFFDFC;
-  --ink: #293746;
-  --muted: #68727C;
-  --line: rgba(25, 52, 86, 0.16);
+  --rose: #E86A6E;
+  --rose-dark: #C85A48;
+  --rose-soft: #F7D8CC;
+  --salmon-deep: #E08A6C;
+  --salmon-deeper: #D2734F;
+  --navy: #1C2E43;
+  --navy-deep: #12212F;
+  --cream: #FBEAE2;
+  --paper: #FFF9F6;
+  --ink: #253645;
+  --muted: #5C6B78;
+  --line: rgba(28, 46, 67, 0.14);
   --line-light: rgba(255, 255, 255, 0.18);
   --white: #FFFFFF;
   --font-heading: "Cormorant Garamond", Georgia, serif;
@@ -148,12 +150,12 @@ textarea:focus-visible {
 }
 
 .btn-primary {
-  background: var(--rose);
-  color: var(--white);
+  background: var(--salmon-deep);
+  color: var(--navy);
 }
 
 .btn-primary:hover {
-  background: var(--rose-dark);
+  background: var(--salmon-deeper);
 }
 
 /* Header */
@@ -163,7 +165,7 @@ textarea:focus-visible {
   top: 0;
   right: 0;
   left: 0;
-  background: rgba(247, 242, 234, 0.94);
+  background: rgba(251, 234, 226, 0.94);
   backdrop-filter: blur(16px);
   transition: box-shadow 220ms ease;
 }
@@ -219,8 +221,8 @@ textarea:focus-visible {
   justify-content: center;
   padding: 0 22px;
   border-radius: var(--radius-small);
-  background: var(--navy);
-  color: var(--white);
+  background: var(--salmon-deep);
+  color: var(--navy);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -229,7 +231,7 @@ textarea:focus-visible {
 }
 
 .header-cta:hover {
-  background: var(--rose);
+  background: var(--salmon-deeper);
   transform: translateY(-1px);
 }
 
@@ -446,7 +448,7 @@ textarea:focus-visible {
 .clientes-ornament::before,
 .clientes-ornament::after {
   position: absolute;
-  border: 1px solid rgba(25, 52, 86, 0.13);
+  border: 1px solid rgba(28, 46, 67, 0.13);
   border-radius: 70% 30% 60% 40%;
   content: "";
 }
@@ -799,7 +801,7 @@ textarea:focus-visible {
 
 .portfolio-carousel-viewport {
   overflow: hidden;
-  background: #E9DED1;
+  background: #F1D8CB;
   box-shadow: 0 24px 70px rgba(16, 36, 62, 0.12);
 }
 
@@ -819,7 +821,7 @@ textarea:focus-visible {
   overflow: hidden;
   padding: 0;
   border: 0;
-  background: var(--slide-tone, #E9DED1);
+  background: var(--slide-tone, #F1D8CB);
   cursor: zoom-in;
 }
 
@@ -845,8 +847,8 @@ textarea:focus-visible {
   right: 24px;
   bottom: 22px;
   padding: 7px 10px;
-  background: rgba(247, 242, 234, 0.84);
-  color: rgba(25, 52, 86, 0.75);
+  background: rgba(251, 234, 226, 0.84);
+  color: rgba(28, 46, 67, 0.75);
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -864,7 +866,7 @@ textarea:focus-visible {
   justify-content: center;
   padding: 0;
   border: 0;
-  background: rgba(247, 242, 234, 0.84);
+  background: rgba(251, 234, 226, 0.84);
   color: var(--navy);
   cursor: pointer;
   font-family: var(--font-heading);
@@ -901,7 +903,7 @@ textarea:focus-visible {
   padding: 0;
   border: 0;
   border-radius: 999px;
-  background: rgba(25, 52, 86, 0.25);
+  background: rgba(28, 46, 67, 0.25);
   cursor: pointer;
   transition: width 200ms ease, background-color 200ms ease;
 }
@@ -1426,7 +1428,7 @@ textarea:focus-visible {
 .form-group textarea {
   width: 100%;
   border: 0;
-  border-bottom: 1px solid rgba(25, 52, 86, 0.25);
+  border-bottom: 1px solid rgba(28, 46, 67, 0.25);
   border-radius: 0;
   background: transparent;
   color: var(--ink);
@@ -1468,8 +1470,8 @@ textarea:focus-visible {
   padding: 0 24px;
   border: 0;
   border-radius: var(--radius-small);
-  background: var(--rose);
-  color: var(--white);
+  background: var(--salmon-deep);
+  color: var(--navy);
   cursor: pointer;
   font-size: 14px;
   font-weight: 700;
@@ -1479,7 +1481,7 @@ textarea:focus-visible {
 }
 
 .form-submit:hover {
-  background: var(--rose-dark);
+  background: var(--salmon-deeper);
   transform: translateY(-2px);
 }
 
@@ -1624,7 +1626,7 @@ textarea:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 32px;
-  background: rgba(10, 24, 42, 0.92);
+  background: rgba(18, 33, 47, 0.92);
   opacity: 0;
   transition: opacity 220ms ease, visibility 220ms ease;
 }
@@ -2148,7 +2150,7 @@ body.capture-mode .faq-header {
   .portfolio-carousel-nav {
     width: 46px;
     height: 58px;
-    background: rgba(247, 242, 234, 0.82);
+    background: rgba(251, 234, 226, 0.82);
     font-size: 48px;
   }
 
