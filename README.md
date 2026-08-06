@@ -44,14 +44,18 @@ Deploy: a `lp/` é publicada em `doispalitosmkt.com.br/miss-milu-lp/`
 
 | Elemento | Valor |
 |---|---|
-| Cor primária | `#EF5F5F` (coral) |
-| Cor botão | `#F26666` |
-| Cor footer | `#F7A99D` (salmão) |
-| Texto | `#545454` |
-| Fonte títulos | Bookman Old Style (serif) |
-| Fonte corpo | Open Sans |
-| Container | 1170px |
+| Fundo (pastel) | `#FBEAE2` salmão · `#FFF9F6` papel |
+| Faixa alternada | `#F7D8CC` |
+| Detalhes / âncoras escuras | `#1C2E43` (tinta azulada) |
+| Botão / CTA | `#D97B52` (salmão profundo) + texto tinta `#1C2E43` |
+| Acento de marca | `#E86A6E` (rosa) |
+| Texto | `#253645` · secundário `#5C6B78` |
+| Fonte títulos | Cormorant Garamond (serif) |
+| Fonte corpo | Manrope |
+| Container | 1280px |
 | Arquivo de tokens | [`design-system/tokens.css`](docs/design-system/tokens.css) |
+
+> Paleta salmão pastel aplicada em 2026-08-06 (estilo editorial "Vivara"). A paleta coral anterior foi substituída.
 
 ### Proposta de valor
 
