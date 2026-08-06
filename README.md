@@ -31,7 +31,7 @@ _fonte/  (fora do git — mantido só localmente)
 ```
 
 `_fonte/` guarda material pesado e de trabalho (fotos-fonte, auditorias, backups).
-Fica fora do git de propósito — é usado para editar a galeria e ajustar as cores da LP.
+Fica fora do git de propósito: é usado para editar a galeria e ajustar as cores da LP.
 
 Deploy: a `lp/` é publicada em `doispalitosmkt.com.br/miss-milu-lp/`
 (servidor Hostinger da 2P). Editar em `lp/` e enviar via SSH.
