@@ -110,6 +110,10 @@ textarea:focus-visible {
   content: "";
 }
 
+.hero-content .section-tag::before {
+  background: var(--navy);
+}
+
 .section-title {
   max-width: 850px;
   margin: 0;
@@ -699,10 +703,17 @@ textarea:focus-visible {
 
 .portfolio-filtros {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   margin: 0 0 58px;
   padding: 0;
   gap: 10px 8px;
+}
+
+.portfolio-filtros::-webkit-scrollbar {
+  display: none;
 }
 
 .portfolio-filtro {
@@ -732,6 +743,11 @@ textarea:focus-visible {
   border-color: var(--navy);
   background: var(--navy);
   color: var(--white);
+}
+
+.portfolio-filtro:disabled {
+  cursor: wait;
+  opacity: 0.55;
 }
 
 .portfolio-filtro.active span,
@@ -842,6 +858,17 @@ textarea:focus-visible {
   transform: scale(1.025);
 }
 
+.portfolio-slide-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  color: var(--muted);
+  cursor: default;
+  font-size: 17px;
+  text-align: center;
+}
+
 .portfolio-slide-label {
   position: absolute;
   right: 24px;
@@ -911,10 +938,6 @@ textarea:focus-visible {
 .portfolio-carousel-dot.active {
   width: 28px;
   background: var(--rose);
-}
-
-.portfolio-source {
-  display: none;
 }
 
 /* Autoria */

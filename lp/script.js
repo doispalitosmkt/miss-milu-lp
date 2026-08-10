@@ -21,63 +21,160 @@
   }
 })();
 
-/* === HERO: carrossel automatico de imagens === */
+/* === PORTFOLIO: catalogo automatico compartilhado === */
+var missMiluPortfolio = (function () {
+  var categoryMeta = {
+    '01-corporativo': {
+      label: 'Corporativo',
+      title: 'Empresas e Corporativo',
+      description: 'Brindes, press kits e gifts para RH, Marketing e Compras que representam a marca com qualidade.'
+    },
+    '02-arquitetos': {
+      label: 'Arquitetos',
+      title: 'Arquitetos',
+      description: 'Caixas e kits de apresentação que valorizam projetos, materiais e entregas especiais de escritórios de arquitetura.'
+    },
+    '03-confeitaria': {
+      label: 'Confeitaria',
+      title: 'Chocolateria e Confeitaria Premium',
+      description: 'Caixas que valorizam trufas, bombons e ovos de Páscoa de alta qualidade.'
+    },
+    '04-cestas-e-cafe': {
+      label: 'Cestas e Café',
+      title: 'Cestas e Café da Manhã',
+      description: 'Caixas tipo maleta para delivery de presentes e cafés da manhã especiais.'
+    },
+    '05-fotografos': {
+      label: 'Fotógrafos',
+      title: 'Fotógrafos Profissionais',
+      description: 'Box de entrega premium para álbuns, pendrive e material fotográfico de valor.'
+    },
+    '06-padrinhos': {
+      label: 'Padrinhos',
+      title: 'Padrinhos',
+      description: 'Caixas personalizadas para convites, lembranças e presentes que tornam esse momento ainda mais especial.'
+    },
+    '07-velas-e-saboaria': {
+      label: 'Velas e Saboaria',
+      title: 'Saboaria e Velas',
+      description: 'Embalagens artesanais para velas aromáticas, difusores e cosméticos naturais.'
+    },
+    '08-casinhas': {
+      label: 'Casinhas',
+      title: 'Casinhas',
+      description: 'Embalagens em formato de casinha criadas para apresentar produtos de forma afetiva, original e memorável.'
+    },
+    '09-datas-sazonais': {
+      label: 'Datas Sazonais',
+      title: 'Datas Sazonais',
+      description: 'Projetos especiais para Páscoa, Natal e outras datas que pedem uma apresentação marcante.'
+    }
+  };
+
+  var categoryOrder = Object.keys(categoryMeta);
+  var fallbackCatalog = window.MISS_MILU_PORTFOLIO_CATALOG;
+
+  function normalizeCatalog(catalog) {
+    if (!catalog || typeof catalog !== 'object' || !catalog.categories) {
+      throw new Error('Catalogo do portfolio invalido.');
+    }
+
+    var normalizedCategories = {};
+    var total = 0;
+
+    categoryOrder.forEach(function (categoryId) {
+      var images = Array.isArray(catalog.categories[categoryId])
+        ? catalog.categories[categoryId]
+        : [];
+
+      normalizedCategories[categoryId] = images.filter(function (image) {
+        return image && typeof image.src === 'string' && image.src.length > 0;
+      });
+      total += normalizedCategories[categoryId].length;
+    });
+
+    return {
+      version: catalog.version || '',
+      total: total,
+      categories: normalizedCategories,
+      errors: Array.isArray(catalog.errors) ? catalog.errors : []
+    };
+  }
+
+  function loadCatalog() {
+    if (!window.fetch || window.location.protocol === 'file:') {
+      return Promise.resolve(normalizeCatalog(fallbackCatalog));
+    }
+
+    return window.fetch('assets/portfolio/catalogo.php', {
+      cache: 'no-store',
+      credentials: 'same-origin'
+    }).then(function (response) {
+      if (!response.ok) {
+        throw new Error('Falha ao carregar o catalogo do portfolio.');
+      }
+      return response.json();
+    }).then(normalizeCatalog).catch(function (error) {
+      if (fallbackCatalog) {
+        return normalizeCatalog(fallbackCatalog);
+      }
+      throw error;
+    });
+  }
+
+  return {
+    meta: categoryMeta,
+    order: categoryOrder,
+    ready: loadCatalog()
+  };
+})();
+
+/* === HERO: ate cinco imagens aleatorias do portfolio === */
 (function () {
   var carousel = document.querySelector('[data-hero-carousel]');
   if (!carousel) return;
 
-  var firstSlide = carousel.querySelector('.hero-carousel-slide');
-  var basePath = 'assets/hero-carrossel/';
-  var extensions = ['webp', 'jpg', 'jpeg', 'png'];
-  var startSlot = Number(carousel.getAttribute('data-hero-start')) || 1;
-  var maxSlots = startSlot + 7;
-  var slides = firstSlide ? [firstSlide] : [];
+  var fallbackSlide = carousel.querySelector('.hero-carousel-slide');
+  var slides = fallbackSlide ? [fallbackSlide] : [];
   var activeIndex = 0;
   var timer = null;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var heroLimit = 5;
 
-  function formatSlot(value) {
-    return value < 10 ? '0' + value : String(value);
-  }
-
-  function probeImage(url) {
-    return new Promise(function (resolve) {
-      var probe = new Image();
-      probe.onload = function () {
-        resolve(url);
-      };
-      probe.onerror = function () {
-        resolve(null);
-      };
-      probe.src = url;
-    });
-  }
-
-  function findSlot(slot) {
-    var extensionIndex = 0;
-
-    function tryNext() {
-      if (extensionIndex >= extensions.length) {
-        return Promise.resolve(null);
-      }
-
-      var url = basePath + formatSlot(slot) + '.' + extensions[extensionIndex];
-      extensionIndex += 1;
-
-      return probeImage(url).then(function (result) {
-        return result || tryNext();
-      });
+  function randomUnit() {
+    if (window.crypto && typeof window.crypto.getRandomValues === 'function') {
+      var randomValue = new Uint32Array(1);
+      window.crypto.getRandomValues(randomValue);
+      return randomValue[0] / 4294967296;
     }
+    return Math.random();
+  }
 
-    return tryNext();
+  function shuffle(items) {
+    var shuffled = items.slice();
+    for (var index = shuffled.length - 1; index > 0; index -= 1) {
+      var randomIndex = Math.floor(randomUnit() * (index + 1));
+      var current = shuffled[index];
+      shuffled[index] = shuffled[randomIndex];
+      shuffled[randomIndex] = current;
+    }
+    return shuffled;
+  }
+
+  function activateSlide(index) {
+    if (!slides.length) return;
+    activeIndex = (index + slides.length) % slides.length;
+
+    slides.forEach(function (slide, slideIndex) {
+      var active = slideIndex === activeIndex;
+      slide.classList.toggle('active', active);
+      slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
   }
 
   function showNext() {
     if (slides.length < 2) return;
-
-    slides[activeIndex].classList.remove('active');
-    activeIndex = (activeIndex + 1) % slides.length;
-    slides[activeIndex].classList.add('active');
+    activateSlide(activeIndex + 1);
   }
 
   function stopCarousel() {
@@ -94,36 +191,95 @@
     }
   }
 
-  function appendSlide(path) {
-    var image = document.createElement('img');
-    image.className = 'hero-carousel-slide';
-    image.src = path;
-    image.alt = 'Projeto em destaque produzido pela Miss Milú';
-    image.width = 1200;
-    image.height = 1500;
-    image.loading = 'eager';
-    image.decoding = 'async';
-    carousel.appendChild(image);
-    slides.push(image);
+  function removeBrokenSlide(image) {
+    var failedIndex = slides.indexOf(image);
+    if (failedIndex < 0) return;
+
+    image.remove();
+    slides.splice(failedIndex, 1);
+    activateSlide(Math.min(activeIndex, slides.length - 1));
+    startCarousel();
   }
 
-  function loadSlots(slot) {
-    if (slot > maxSlots) {
-      return Promise.resolve();
+  function createSlide(photo, index) {
+    var category = missMiluPortfolio.meta[photo.category];
+    var image = document.createElement('img');
+    image.className = 'hero-carousel-slide';
+    image.src = photo.src;
+    image.alt = 'Projeto de ' + (category ? category.label.toLowerCase() : 'embalagem personalizada') + ' produzido pela Miss Milú';
+    image.width = photo.width || 1200;
+    image.height = photo.height || 1500;
+    image.loading = index === 0 ? 'eager' : 'lazy';
+    image.decoding = 'async';
+    image.setAttribute('aria-hidden', index === 0 ? 'false' : 'true');
+    if (index === 0) {
+      image.fetchPriority = 'high';
+    }
+    image.addEventListener('error', function () {
+      removeBrokenSlide(image);
+    });
+    return image;
+  }
+
+  function waitForFirstImage(image) {
+    if (image.complete) {
+      return Promise.resolve(image.naturalWidth > 0);
     }
 
-    return findSlot(slot).then(function (path) {
-      if (!path) {
-        return;
-      }
-
-      appendSlide(path);
-      return loadSlots(slot + 1);
+    return new Promise(function (resolve) {
+      image.addEventListener('load', function () { resolve(true); }, { once: true });
+      image.addEventListener('error', function () { resolve(false); }, { once: true });
     });
   }
 
-  loadSlots(startSlot + 1).then(function () {
-    startCarousel();
+  function buildHeroPool(catalog) {
+    var pool = [];
+    missMiluPortfolio.order.forEach(function (categoryId) {
+      catalog.categories[categoryId].forEach(function (photo) {
+        pool.push({
+          category: categoryId,
+          src: photo.src,
+          width: photo.width,
+          height: photo.height
+        });
+      });
+    });
+    return shuffle(pool);
+  }
+
+  function renderHero(pool) {
+    var selection = pool.slice(0, Math.min(heroLimit, pool.length));
+    if (!selection.length) {
+      carousel.setAttribute('aria-busy', 'false');
+      return;
+    }
+
+    var nextSlides = selection.map(createSlide);
+
+    waitForFirstImage(nextSlides[0]).then(function (loaded) {
+      if (!loaded) {
+        renderHero(pool.slice(1));
+        return;
+      }
+
+      stopCarousel();
+      carousel.innerHTML = '';
+      nextSlides.forEach(function (slide) {
+        carousel.appendChild(slide);
+      });
+      slides = nextSlides;
+      activeIndex = 0;
+      activateSlide(0);
+      carousel.setAttribute('aria-busy', 'false');
+      startCarousel();
+    });
+  }
+
+  carousel.setAttribute('aria-busy', 'true');
+  missMiluPortfolio.ready.then(function (catalog) {
+    renderHero(buildHeroPool(catalog));
+  }).catch(function () {
+    carousel.setAttribute('aria-busy', 'false');
   });
 
   document.addEventListener('visibilitychange', startCarousel);
@@ -480,146 +636,9 @@
 
 
 
-/* === PORTFOLIO: filtro + ver mais === */
-(function () {
-  var grid = document.getElementById('portfolio-grid');
-  if (!grid || grid.hidden) return;
-
-  var itens   = Array.prototype.slice.call(grid.querySelectorAll('.portfolio-item'));
-  var filtros = Array.prototype.slice.call(document.querySelectorAll('[data-filtro]'));
-  var btnMais = document.getElementById('portfolio-mais');
-  var vazio   = document.getElementById('portfolio-vazio');
-  var LOTE    = 16;
-
-  var atual = 'todos';
-  var expandido = false;
-
-  function daCategoria(cat) {
-    return cat === 'todos'
-      ? itens
-      : itens.filter(function (el) { return el.getAttribute('data-cat') === cat; });
-  }
-
-  function render() {
-    var visiveis = daCategoria(atual);
-    /* ao filtrar um segmento mostra ele inteiro; o "ver mais" so existe no Todos */
-    var limite = (atual === 'todos' && !expandido) ? LOTE : visiveis.length;
-
-    itens.forEach(function (el) { el.classList.add('is-hidden'); });
-    visiveis.slice(0, limite).forEach(function (el) { el.classList.remove('is-hidden'); });
-
-    if (btnMais) {
-      btnMais.hidden = visiveis.length <= limite;
-    }
-    if (vazio) {
-      vazio.hidden = visiveis.length !== 0;
-    }
-  }
-
-  filtros.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      atual = btn.getAttribute('data-filtro');
-      expandido = false;
-      filtros.forEach(function (b) {
-        var on = b === btn;
-        b.classList.toggle('active', on);
-        b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
-      render();
-    });
-  });
-
-  if (btnMais) {
-    btnMais.addEventListener('click', function () {
-      expandido = true;
-      render();
-      btnMais.blur();
-    });
-  }
-
-  render();
-})();
-
-
-/* === PORTFOLIO: lightbox === */
-(function () {
-  var caixa    = document.getElementById('lightbox');
-  var img      = document.getElementById('lightbox-img');
-  var legenda  = document.getElementById('lightbox-legenda');
-  var btnFecha = document.getElementById('lightbox-fechar');
-  var btnPrev  = document.getElementById('lightbox-prev');
-  var btnNext  = document.getElementById('lightbox-next');
-  var grid     = document.getElementById('portfolio-grid');
-  if (!caixa || !img || !grid || grid.hidden) return;
-
-  var indice = 0;
-
-  function visiveis() {
-    return Array.prototype.slice.call(
-      grid.querySelectorAll('.portfolio-item:not(.is-hidden)')
-    );
-  }
-
-  function mostrar(i) {
-    var lista = visiveis();
-    if (!lista.length) return;
-    indice = (i + lista.length) % lista.length;
-
-    var item = lista[indice];
-    var foto = item.querySelector('img');
-    var cap  = item.querySelector('figcaption');
-
-    /* o lightbox nunca amplia alem do nativo: a origem e limitada */
-    img.style.width = item.getAttribute('data-w') + 'px';
-    img.src = item.getAttribute('data-full');
-    img.alt = foto ? foto.alt : '';
-    if (legenda) legenda.textContent = cap ? cap.textContent : '';
-
-    var so = lista.length < 2;
-    if (btnPrev) btnPrev.hidden = so;
-    if (btnNext) btnNext.hidden = so;
-  }
-
-  function abrir(i) {
-    mostrar(i);
-    caixa.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    if (btnFecha) btnFecha.focus();
-  }
-
-  function fechar() {
-    caixa.classList.remove('active');
-    document.body.style.overflow = '';
-    img.src = '';
-  }
-
-  grid.addEventListener('click', function (e) {
-    var item = e.target.closest ? e.target.closest('.portfolio-item') : null;
-    if (!item) return;
-    var i = visiveis().indexOf(item);
-    if (i >= 0) abrir(i);
-  });
-
-  if (btnFecha) btnFecha.addEventListener('click', fechar);
-  if (btnPrev)  btnPrev.addEventListener('click', function () { mostrar(indice - 1); });
-  if (btnNext)  btnNext.addEventListener('click', function () { mostrar(indice + 1); });
-
-  caixa.addEventListener('click', function (e) {
-    if (e.target === caixa) fechar();
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (!caixa.classList.contains('active')) return;
-    if (e.key === 'Escape')     fechar();
-    if (e.key === 'ArrowLeft')  mostrar(indice - 1);
-    if (e.key === 'ArrowRight') mostrar(indice + 1);
-  });
-})();
-
 
 /* === PORTFOLIO EDITORIAL: segmentos, curadoria, carrossel e lightbox === */
 (function () {
-  var source = document.getElementById('portfolio-grid');
   var track = document.getElementById('portfolio-carousel-track');
   var dots = document.getElementById('portfolio-carousel-dots');
   var title = document.getElementById('portfolio-segment-title');
@@ -647,115 +666,8 @@
   var lightboxIndex = 0;
   var activeSlides = [];
   var touchStartX = 0;
-
-  var categories = {
-    '01-corporativo': {
-      title: 'Empresas e Corporativo',
-      description: 'Brindes, press kits e gifts para RH, Marketing e Compras que representam a marca com qualidade.',
-      picks: [
-        ['01.jpg', 'cover'],
-        ['02.jpg', 'cover'],
-        ['03.jpg', 'cover'],
-        ['04.jpg', 'cover'],
-        ['05.jpg', 'cover'],
-        ['06.jpg', 'cover']
-      ]
-    },
-    '02-arquitetos': {
-      title: 'Arquitetos',
-      description: 'Caixas e kits de apresentação que valorizam projetos, materiais e entregas especiais de escritórios de arquitetura.',
-      picks: [
-        ['01.webp', 'contain'],
-        ['02.webp', 'contain'],
-        ['03.webp', 'cover'],
-        ['04.webp', 'cover'],
-        ['05.webp', 'cover'],
-        ['06.webp', 'cover']
-      ]
-    },
-    '03-confeitaria': {
-      title: 'Chocolateria e Confeitaria Premium',
-      description: 'Caixas que valorizam trufas, bombons e ovos de Páscoa de alta qualidade.',
-      picks: [
-        ['07.jpg', 'cover'],
-        ['08.jpg', 'cover'],
-        ['09.jpg', 'cover'],
-        ['10.jpg', 'cover'],
-        ['11.jpg', 'cover'],
-        ['12.jpg', 'cover']
-      ]
-    },
-    '04-cestas-e-cafe': {
-      title: 'Cestas e Café da Manhã',
-      description: 'Caixas tipo maleta para delivery de presentes e cafés da manhã especiais.',
-      picks: [
-        ['01.webp', 'cover'],
-        ['02.webp', 'contain'],
-        ['03.webp', 'cover'],
-        ['04.webp', 'contain'],
-        ['05.webp', 'contain'],
-        ['06.webp', 'cover']
-      ]
-    },
-    '05-fotografos': {
-      title: 'Fotógrafos Profissionais',
-      description: 'Box de entrega premium para álbuns, pendrive e material fotográfico de valor.',
-      picks: [
-        ['01.webp', 'cover'],
-        ['02.webp', 'cover'],
-        ['03.webp', 'contain'],
-        ['04.webp', 'cover'],
-        ['05.webp', 'contain']
-      ]
-    },
-    '06-padrinhos': {
-      title: 'Padrinhos',
-      description: 'Caixas personalizadas para convites, lembranças e presentes que tornam esse momento ainda mais especial.',
-      picks: [
-        ['13.jpg', 'cover'],
-        ['14.jpg', 'cover'],
-        ['15.jpg', 'cover'],
-        ['16.jpg', 'cover'],
-        ['17.jpg', 'cover'],
-        ['18.jpg', 'cover']
-      ]
-    },
-    '07-velas-e-saboaria': {
-      title: 'Saboaria e Velas',
-      description: 'Embalagens artesanais para velas aromáticas, difusores e cosméticos naturais.',
-      picks: [
-        ['01.webp', 'cover'],
-        ['02.webp', 'cover'],
-        ['03.webp', 'cover'],
-        ['04.webp', 'cover'],
-        ['05.webp', 'cover'],
-        ['06.webp', 'contain']
-      ]
-    },
-    '08-casinhas': {
-      title: 'Casinhas',
-      description: 'Embalagens em formato de casinha criadas para apresentar produtos de forma afetiva, original e memorável.',
-      picks: [
-        ['19.jpg', 'cover'],
-        ['20.jpg', 'cover'],
-        ['21.jpg', 'cover'],
-        ['22.jpg', 'cover'],
-        ['23.jpg', 'cover'],
-        ['24.jpg', 'cover']
-      ]
-    },
-    '09-datas-sazonais': {
-      title: 'Datas Sazonais',
-      description: 'Projetos especiais para Páscoa, Natal e outras datas que pedem uma apresentação marcante.',
-      picks: [
-        ['01.webp', 'cover'],
-        ['02.webp', 'cover'],
-        ['03.webp', 'contain'],
-        ['04.webp', 'contain'],
-        ['05.webp', 'cover']
-      ]
-    }
-  };
+  var catalogCategories = {};
+  var failedSources = {};
 
   function formatNumber(value) {
     return value < 10 ? '0' + value : String(value);
@@ -786,53 +698,89 @@
     if (lightboxClose) lightboxClose.focus();
   }
 
-  function buildSlides(category) {
-    var config = categories[category] || categories['01-corporativo'];
-    activeCategory = category;
-    var activeFilter = filters.find(function (filter) {
-      return filter.getAttribute('data-filtro') === activeCategory;
-    });
-    var categoryLabel = activeFilter && activeFilter.childNodes.length
-      ? activeFilter.childNodes[0].textContent.trim()
-      : config.title;
+  function updateFilterCounts() {
+    filters.forEach(function (filter) {
+      var categoryId = filter.getAttribute('data-filtro');
+      var config = missMiluPortfolio.meta[categoryId];
+      var count = (catalogCategories[categoryId] || []).filter(function (photo) {
+        return !failedSources[photo.src];
+      }).length;
+      var countLabel = filter.querySelector('.portfolio-filtro-count');
 
-    activeSlides = config.picks.map(function (pick) {
+      if (!countLabel) {
+        countLabel = document.createElement('span');
+        countLabel.className = 'portfolio-filtro-count';
+        countLabel.setAttribute('aria-hidden', 'true');
+        filter.appendChild(countLabel);
+      }
+
+      countLabel.textContent = formatNumber(count);
+      if (config) {
+        filter.setAttribute('aria-label', config.label + ': ' + count + ' projetos');
+      }
+    });
+  }
+
+  function renderEmptyState() {
+    var empty = document.createElement('div');
+    empty.className = 'portfolio-slide portfolio-slide-empty';
+    empty.setAttribute('aria-hidden', 'false');
+    empty.textContent = 'Nenhuma imagem disponível neste segmento.';
+    track.appendChild(empty);
+    currentLabel.textContent = '00';
+    carouselPrev.hidden = true;
+    carouselNext.hidden = true;
+  }
+
+  function buildSlides(category) {
+    var defaultCategory = missMiluPortfolio.order[0];
+    var config = missMiluPortfolio.meta[category] || missMiluPortfolio.meta[defaultCategory];
+    activeCategory = missMiluPortfolio.meta[category] ? category : defaultCategory;
+    activeIndex = 0;
+
+    activeSlides = (catalogCategories[activeCategory] || []).filter(function (photo) {
+      return !failedSources[photo.src];
+    }).map(function (photo) {
       return {
-        category: activeCategory,
-        file: pick[0],
-        mode: pick[1],
-        full: 'assets/portfolio-trocar/' + activeCategory + '/' + pick[0],
-        alt: 'Caixa personalizada Miss Milú para ' + categoryLabel.toLowerCase(),
-        caption: categoryLabel
+        src: photo.src,
+        width: photo.width,
+        height: photo.height,
+        alt: 'Caixa personalizada Miss Milú para ' + config.label.toLowerCase(),
+        caption: config.label
       };
-    }).slice(0, 6);
+    });
 
     title.textContent = config.title;
     description.textContent = config.description;
     totalLabel.textContent = formatNumber(activeSlides.length);
     track.innerHTML = '';
     dots.innerHTML = '';
+    track.style.transform = 'translate3d(0, 0, 0)';
+
+    if (!activeSlides.length) {
+      renderEmptyState();
+      return;
+    }
 
     activeSlides.forEach(function (slide, index) {
       var button = document.createElement('button');
       button.type = 'button';
-      button.className = 'portfolio-slide' + (slide.mode === 'contain' ? ' is-contained' : '');
+      button.className = 'portfolio-slide';
       button.style.setProperty('--slide-tone', tones[index % tones.length]);
       button.setAttribute('aria-label', 'Ampliar projeto ' + slide.caption + ', imagem ' + (index + 1));
 
       var image = document.createElement('img');
-      image.src = slide.full;
       image.alt = slide.alt;
+      image.width = slide.width || 1200;
+      image.height = slide.height || 1500;
       image.loading = index === 0 ? 'eager' : 'lazy';
       image.decoding = 'async';
-      image.addEventListener('load', function () {
-        var ratio = image.naturalWidth / image.naturalHeight;
-        var isPreparedFormat = image.naturalWidth >= 1000 && Math.abs(ratio - 0.8) <= 0.025;
-
-        if (isPreparedFormat) {
-          button.classList.remove('is-contained');
-        }
+      image.addEventListener('error', function () {
+        failedSources[slide.src] = true;
+        updateFilterCounts();
+        buildSlides(activeCategory);
       });
+      image.src = slide.src;
 
       var label = document.createElement('span');
       label.className = 'portfolio-slide-label';
@@ -866,7 +814,7 @@
     var slide = activeSlides[lightboxIndex];
 
     lightboxImg.style.removeProperty('width');
-    lightboxImg.src = slide.full;
+    lightboxImg.src = slide.src;
     lightboxImg.alt = slide.alt;
     if (lightboxCaption) lightboxCaption.textContent = slide.caption;
 
@@ -882,6 +830,7 @@
   }
 
   filters.forEach(function (filter) {
+    filter.disabled = true;
     filter.addEventListener('click', function () {
       var category = filter.getAttribute('data-filtro');
       filters.forEach(function (button) {
@@ -926,5 +875,29 @@
     if (event.key === 'ArrowRight') showLightbox(lightboxIndex + 1);
   });
 
-  buildSlides(activeCategory);
+  carousel.setAttribute('aria-busy', 'true');
+  missMiluPortfolio.ready.then(function (catalog) {
+    catalogCategories = catalog.categories;
+    updateFilterCounts();
+    filters.forEach(function (filter) {
+      filter.disabled = false;
+    });
+    buildSlides(activeCategory);
+    carousel.setAttribute('aria-busy', 'false');
+
+    if (catalog.errors.length && window.console && typeof window.console.warn === 'function') {
+      window.console.warn('Avisos do catálogo do portfólio:', catalog.errors);
+    }
+  }).catch(function (error) {
+    updateFilterCounts();
+    filters.forEach(function (filter) {
+      filter.disabled = false;
+    });
+    buildSlides(activeCategory);
+    carousel.setAttribute('aria-busy', 'false');
+
+    if (window.console && typeof window.console.error === 'function') {
+      window.console.error(error);
+    }
+  });
 })();
