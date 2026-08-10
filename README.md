@@ -16,8 +16,8 @@ miss-milu-lp/
 
 ## Deploy
 
-A `lp/` é publicada em `doispalitosmkt.com.br/miss-milu-lp/` (servidor Hostinger).
-Editar em `lp/` e enviar via SSH.
+Publicada via GitHub Pages a partir da pasta `lp/` (workflow em
+[`.github/workflows/pages.yml`](.github/workflows/pages.yml)): https://doispalitosmkt.github.io/miss-milu-lp/
 
 ## Portfólio
 

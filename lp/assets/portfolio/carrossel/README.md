@@ -40,9 +40,10 @@ bordas podem sofrer um pequeno recorte.
 
 ## Visualização sem PHP
 
-No servidor publicado da Hostinger, a leitura das pastas é automática. Caso a
-página seja aberta diretamente ou em um servidor local que não execute PHP,
-atualize o catálogo de fallback depois de alterar as fotos:
+Em um servidor com PHP, a leitura das pastas é automática. Caso a página seja
+aberta diretamente ou publicada em um servidor estático que não execute PHP
+(como o GitHub Pages), atualize o catálogo de fallback depois de alterar as
+fotos:
 
 ```bash
 php assets/portfolio/catalogo.php --write
@@ -53,6 +54,3 @@ Para apenas conferir se esse fallback está sincronizado:
 ```bash
 php assets/portfolio/catalogo.php --check
 ```
-
-As pastas `assets/portfolio/full` e `assets/portfolio/grade` são acervo da
-galeria antiga e não devem receber as fotos novas.
