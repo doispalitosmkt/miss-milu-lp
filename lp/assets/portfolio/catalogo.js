@@ -1,47 +1,47 @@
 window.MISS_MILU_PORTFOLIO_CATALOG = {
-    "version": "600cffb4e8c5993c",
-    "total": 51,
+    "version": "d41b94b3e15325fd",
+    "total": 50,
     "categories": {
         "01-corporativo": [
             {
-                "file": "01.webp",
-                "src": "assets/portfolio/carrossel/01-corporativo/01.webp?v=fb49e6034fe2",
+                "file": "01 (copy).webp",
+                "src": "assets/portfolio/carrossel/01-corporativo/01%20%28copy%29.webp?v=69ae7b82119f",
                 "width": 1448,
                 "height": 1086,
                 "mime": "image/webp",
-                "bytes": 110074
+                "bytes": 128264
+            },
+            {
+                "file": "01.webp",
+                "src": "assets/portfolio/carrossel/01-corporativo/01.webp?v=e7b4721ed961",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 71786
             },
             {
                 "file": "02.webp",
-                "src": "assets/portfolio/carrossel/01-corporativo/02.webp?v=05eec9489b64",
+                "src": "assets/portfolio/carrossel/01-corporativo/02.webp?v=7acc2fd97a4d",
                 "width": 1448,
                 "height": 1086,
                 "mime": "image/webp",
-                "bytes": 72116
-            },
-            {
-                "file": "03.webp",
-                "src": "assets/portfolio/carrossel/01-corporativo/03.webp?v=38e26f933531",
-                "width": 1448,
-                "height": 1086,
-                "mime": "image/webp",
-                "bytes": 122554
+                "bytes": 103960
             },
             {
                 "file": "04.webp",
-                "src": "assets/portfolio/carrossel/01-corporativo/04.webp?v=b4a02af76467",
+                "src": "assets/portfolio/carrossel/01-corporativo/04.webp?v=7830cb395d22",
                 "width": 1448,
                 "height": 1086,
                 "mime": "image/webp",
-                "bytes": 123946
+                "bytes": 71816
             },
             {
                 "file": "05.webp",
-                "src": "assets/portfolio/carrossel/01-corporativo/05.webp?v=b6b042bf020c",
+                "src": "assets/portfolio/carrossel/01-corporativo/05.webp?v=85972424c3a2",
                 "width": 1448,
                 "height": 1086,
                 "mime": "image/webp",
-                "bytes": 111220
+                "bytes": 87330
             }
         ],
         "02-arquitetos": [
@@ -97,19 +97,19 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
         "03-confeitaria": [
             {
                 "file": "01.webp",
-                "src": "assets/portfolio/carrossel/03-confeitaria/01.webp?v=69ae7b82119f",
+                "src": "assets/portfolio/carrossel/03-confeitaria/01.webp?v=fb49e6034fe2",
                 "width": 1448,
                 "height": 1086,
                 "mime": "image/webp",
-                "bytes": 128264
+                "bytes": 110074
             },
             {
-                "file": "02.webp",
-                "src": "assets/portfolio/carrossel/03-confeitaria/02.webp?v=7acc2fd97a4d",
+                "file": "02 (copy).webp",
+                "src": "assets/portfolio/carrossel/03-confeitaria/02%20%28copy%29.webp?v=05eec9489b64",
                 "width": 1448,
                 "height": 1086,
                 "mime": "image/webp",
-                "bytes": 103960
+                "bytes": 72116
             },
             {
                 "file": "03.webp",
@@ -118,33 +118,9 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "height": 1086,
                 "mime": "image/webp",
                 "bytes": 50026
-            },
-            {
-                "file": "04.webp",
-                "src": "assets/portfolio/carrossel/03-confeitaria/04.webp?v=7830cb395d22",
-                "width": 1448,
-                "height": 1086,
-                "mime": "image/webp",
-                "bytes": 71816
-            },
-            {
-                "file": "05.webp",
-                "src": "assets/portfolio/carrossel/03-confeitaria/05.webp?v=85972424c3a2",
-                "width": 1448,
-                "height": 1086,
-                "mime": "image/webp",
-                "bytes": 87330
             }
         ],
         "04-cestas-e-cafe": [
-            {
-                "file": "01.webp",
-                "src": "assets/portfolio/carrossel/04-cestas-e-cafe/01.webp?v=e7b4721ed961",
-                "width": 1448,
-                "height": 1086,
-                "mime": "image/webp",
-                "bytes": 71786
-            },
             {
                 "file": "02.webp",
                 "src": "assets/portfolio/carrossel/04-cestas-e-cafe/02.webp?v=8da0a5a58f85",
@@ -404,12 +380,28 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "bytes": 150398
             },
             {
+                "file": "03 (copy).webp",
+                "src": "assets/portfolio/carrossel/09-datas-sazonais/03%20%28copy%29.webp?v=38e26f933531",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 122554
+            },
+            {
                 "file": "03.webp",
                 "src": "assets/portfolio/carrossel/09-datas-sazonais/03.webp?v=45d4bf203936",
                 "width": 1448,
                 "height": 1086,
                 "mime": "image/webp",
                 "bytes": 108376
+            },
+            {
+                "file": "04 (copy).webp",
+                "src": "assets/portfolio/carrossel/09-datas-sazonais/04%20%28copy%29.webp?v=b4a02af76467",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 123946
             },
             {
                 "file": "04.webp",
