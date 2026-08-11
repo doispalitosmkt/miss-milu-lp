@@ -497,13 +497,17 @@ textarea:focus-visible {
 }
 
 .produto-visual {
+  position: relative;
   display: block;
   min-height: 760px;
   overflow: hidden;
   background: var(--rose-soft);
 }
 
-.produto-visual img {
+.produto-visual img,
+.produto-visual video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -2086,6 +2090,10 @@ body.capture-mode .faq-header {
     height: 220px;
   }
 
+  .produto {
+    padding-top: 0;
+  }
+
   .produto-inner {
     min-height: 0;
     grid-template-columns: 1fr;
@@ -2093,7 +2101,7 @@ body.capture-mode .faq-header {
 
   .produto-visual {
     min-height: 0;
-    aspect-ratio: 3 / 2;
+    height: calc(66.667vw + 60px);
   }
 
   .produto-conteudo {

@@ -57,12 +57,12 @@ var missMiluPortfolio = (function () {
     '07-velas-e-saboaria': {
       label: 'Velas e Saboaria',
       title: 'Saboaria e Velas',
-      description: 'Embalagens artesanais para velas aromáticas, difusores e cosméticos naturais.'
+      description: 'Caixas artesanais para velas aromáticas, difusores e cosméticos naturais.'
     },
     '08-casinhas': {
       label: 'Casinhas',
       title: 'Casinhas',
-      description: 'Embalagens em formato de casinha criadas para apresentar produtos de forma afetiva, original e memorável.'
+      description: 'Caixas em formato de casinha criadas para apresentar produtos de forma afetiva, original e memorável.'
     },
     '09-datas-sazonais': {
       label: 'Datas Sazonais',
@@ -206,7 +206,7 @@ var missMiluPortfolio = (function () {
     var image = document.createElement('img');
     image.className = 'hero-carousel-slide';
     image.src = photo.src;
-    image.alt = 'Projeto de ' + (category ? category.label.toLowerCase() : 'embalagem personalizada') + ' produzido pela Miss Milú';
+    image.alt = 'Projeto de ' + (category ? category.label.toLowerCase() : 'caixa personalizada') + ' produzido pela Miss Milú';
     image.width = photo.width || 1200;
     image.height = photo.height || 1500;
     image.loading = index === 0 ? 'eager' : 'lazy';
