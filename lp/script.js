@@ -102,23 +102,8 @@ var missMiluPortfolio = (function () {
   }
 
   function loadCatalog() {
-    if (!window.fetch || window.location.protocol === 'file:') {
-      return Promise.resolve(normalizeCatalog(fallbackCatalog));
-    }
-
-    return window.fetch('assets/portfolio/catalogo.php', {
-      cache: 'no-store',
-      credentials: 'same-origin'
-    }).then(function (response) {
-      if (!response.ok) {
-        throw new Error('Falha ao carregar o catalogo do portfolio.');
-      }
-      return response.json();
-    }).then(normalizeCatalog).catch(function (error) {
-      if (fallbackCatalog) {
-        return normalizeCatalog(fallbackCatalog);
-      }
-      throw error;
+    return Promise.resolve().then(function () {
+      return normalizeCatalog(fallbackCatalog);
     });
   }
 

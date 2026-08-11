@@ -13,12 +13,11 @@ do hero. Cada segmento possui uma pasta própria:
 8. `08-casinhas`
 9. `09-datas-sazonais`
 
-## Funcionamento automático
+## Funcionamento do catálogo
 
-O arquivo `assets/portfolio/catalogo.php` varre essas nove pastas quando a
-página carrega. A quantidade de fotos não fica escrita no HTML ou no JavaScript:
-adicionar, substituir ou remover uma imagem atualiza automaticamente a galeria
-do segmento no próximo carregamento da página.
+O arquivo `assets/portfolio/catalogo.php` varre essas nove pastas localmente e
+gera `assets/portfolio/catalogo.js`, que é carregado pela página. A quantidade
+de fotos não fica escrita no HTML ou no JavaScript principal.
 
 O hero usa o mesmo catálogo e sorteia no máximo cinco imagens distintas de todo
 o portfólio a cada visita. A antiga pasta `assets/hero-carrossel` não alimenta
@@ -31,25 +30,24 @@ mais o site.
 3. Para controlar a ordem, prefira nomes como `01.webp`, `02.webp`, `03.webp`.
 4. Não é necessário manter uma quantidade fixa e não há problema em ultrapassar
    seis fotos.
-5. Recarregue a página; o catálogo também altera a versão da URL quando o
-   conteúdo de um arquivo muda, evitando imagens antigas no cache.
+5. Gere novamente o catálogo com o comando abaixo e recarregue a página. O
+   catálogo altera a versão da URL quando o conteúdo de um arquivo muda,
+   evitando imagens antigas no cache.
 
 As imagens precisam ter o assunto principal próximo ao centro. A galeria e o
 hero usam enquadramentos diferentes e aplicam `object-fit: cover`, portanto as
 bordas podem sofrer um pequeno recorte.
 
-## Visualização sem PHP
+## Atualização do catálogo estático
 
-Em um servidor com PHP, a leitura das pastas é automática. Caso a página seja
-aberta diretamente ou publicada em um servidor estático que não execute PHP
-(como o GitHub Pages), atualize o catálogo de fallback depois de alterar as
-fotos:
+O site publicado é totalmente estático e não executa PHP. Depois de alterar as
+fotos, atualize o catálogo antes de publicar:
 
 ```bash
 php assets/portfolio/catalogo.php --write
 ```
 
-Para apenas conferir se esse fallback está sincronizado:
+Para apenas conferir se o catálogo está sincronizado:
 
 ```bash
 php assets/portfolio/catalogo.php --check

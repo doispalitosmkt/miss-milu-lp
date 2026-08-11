@@ -7,7 +7,7 @@ declare(strict_types=1);
  *
  * No servidor, este arquivo responde com JSON e varre as pastas a cada acesso.
  * No terminal, use `php assets/portfolio/catalogo.php --write` para atualizar o
- * fallback `catalogo.js`, usado quando a página é aberta sem suporte a PHP.
+ * catálogo estático `catalogo.js`, carregado pela página publicada.
  */
 
 $categoryIds = [

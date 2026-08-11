@@ -4,6 +4,7 @@ _fonte/
 # Deploy / tooling local
 .deploy/
 .claude/settings.local.json
+.wrangler/
 
 # Sistema operacional
 Thumbs.db
