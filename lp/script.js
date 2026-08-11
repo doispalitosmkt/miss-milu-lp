@@ -3,24 +3,6 @@
    script.js
    ============================================================= */
 
-/* === COMPOSICAO EDITORIAL DAS SECOES === */
-(function () {
-  var clientesContent = document.getElementById('clientes-content');
-  var brandsHeading = document.querySelector('.hero-brands-heading');
-  var brandsGrid = document.querySelector('.hero-logo-carousel');
-  var produto = document.getElementById('produto');
-  var facilidades = document.querySelector('.facilidades');
-
-  if (clientesContent && brandsHeading && brandsGrid) {
-    clientesContent.appendChild(brandsHeading);
-    clientesContent.appendChild(brandsGrid);
-  }
-
-  if (produto && facilidades) {
-    produto.insertAdjacentElement('afterend', facilidades);
-  }
-})();
-
 /* === PORTFOLIO: catalogo automatico compartilhado === */
 var missMiluPortfolio = (function () {
   var categoryMeta = {
