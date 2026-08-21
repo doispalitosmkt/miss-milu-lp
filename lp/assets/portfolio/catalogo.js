@@ -1,6 +1,6 @@
 window.MISS_MILU_PORTFOLIO_CATALOG = {
-    "version": "d41b94b3e15325fd",
-    "total": 50,
+    "version": "8a660eaf21091f3f",
+    "total": 52,
     "categories": {
         "01-corporativo": [
             {
@@ -104,20 +104,28 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "bytes": 110074
             },
             {
-                "file": "02 (copy).webp",
-                "src": "assets/portfolio/carrossel/03-confeitaria/02%20%28copy%29.webp?v=05eec9489b64",
-                "width": 1448,
-                "height": 1086,
+                "file": "02.webp",
+                "src": "assets/portfolio/carrossel/03-confeitaria/02.webp?v=a99c34d3877f",
+                "width": 901,
+                "height": 2000,
                 "mime": "image/webp",
-                "bytes": 72116
+                "bytes": 114822
             },
             {
                 "file": "03.webp",
-                "src": "assets/portfolio/carrossel/03-confeitaria/03.webp?v=78f011143757",
-                "width": 1448,
-                "height": 1086,
+                "src": "assets/portfolio/carrossel/03-confeitaria/03.webp?v=27c4629516ec",
+                "width": 1080,
+                "height": 1281,
                 "mime": "image/webp",
-                "bytes": 50026
+                "bytes": 57528
+            },
+            {
+                "file": "04.webp",
+                "src": "assets/portfolio/carrossel/03-confeitaria/04.webp?v=170d7e32a2c9",
+                "width": 1080,
+                "height": 1054,
+                "mime": "image/webp",
+                "bytes": 97278
             }
         ],
         "04-cestas-e-cafe": [
@@ -215,19 +223,19 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
         "06-padrinhos": [
             {
                 "file": "01.webp",
-                "src": "assets/portfolio/carrossel/06-padrinhos/01.webp?v=838e6c31a7ba",
-                "width": 1448,
-                "height": 1086,
+                "src": "assets/portfolio/carrossel/06-padrinhos/01.webp?v=10c5917c0db9",
+                "width": 901,
+                "height": 2000,
                 "mime": "image/webp",
-                "bytes": 143822
+                "bytes": 53142
             },
             {
                 "file": "02.webp",
-                "src": "assets/portfolio/carrossel/06-padrinhos/02.webp?v=3122703d1d16",
-                "width": 1448,
-                "height": 1086,
+                "src": "assets/portfolio/carrossel/06-padrinhos/02.webp?v=fb607072869b",
+                "width": 1125,
+                "height": 2000,
                 "mime": "image/webp",
-                "bytes": 122822
+                "bytes": 157378
             },
             {
                 "file": "03.webp",
@@ -289,27 +297,27 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
             },
             {
                 "file": "04.webp",
-                "src": "assets/portfolio/carrossel/07-velas-e-saboaria/04.webp?v=64bca550df8e",
-                "width": 1448,
-                "height": 1086,
+                "src": "assets/portfolio/carrossel/07-velas-e-saboaria/04.webp?v=bddceff4a3a2",
+                "width": 1080,
+                "height": 1559,
                 "mime": "image/webp",
-                "bytes": 125204
+                "bytes": 98752
             },
             {
                 "file": "05.webp",
-                "src": "assets/portfolio/carrossel/07-velas-e-saboaria/05.webp?v=f232823994a5",
-                "width": 1448,
-                "height": 1086,
+                "src": "assets/portfolio/carrossel/07-velas-e-saboaria/05.webp?v=679f383e78df",
+                "width": 1080,
+                "height": 1586,
                 "mime": "image/webp",
-                "bytes": 75776
+                "bytes": 99972
             },
             {
                 "file": "06.webp",
-                "src": "assets/portfolio/carrossel/07-velas-e-saboaria/06.webp?v=967aa68e3cf1",
-                "width": 1448,
-                "height": 1086,
+                "src": "assets/portfolio/carrossel/07-velas-e-saboaria/06.webp?v=8470beb20f8c",
+                "width": 1500,
+                "height": 2000,
                 "mime": "image/webp",
-                "bytes": 107370
+                "bytes": 106156
             }
         ],
         "08-casinhas": [
@@ -347,19 +355,19 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
             },
             {
                 "file": "05.webp",
-                "src": "assets/portfolio/carrossel/08-casinhas/05.webp?v=973f62e228d3",
-                "width": 1200,
-                "height": 1500,
+                "src": "assets/portfolio/carrossel/08-casinhas/05.webp?v=476c12347a6b",
+                "width": 1755,
+                "height": 2000,
                 "mime": "image/webp",
-                "bytes": 72684
+                "bytes": 330914
             },
             {
                 "file": "06.webp",
-                "src": "assets/portfolio/carrossel/08-casinhas/06.webp?v=8d1d9fbe516f",
-                "width": 1200,
-                "height": 1500,
+                "src": "assets/portfolio/carrossel/08-casinhas/06.webp?v=f9a92b4ef0a3",
+                "width": 1500,
+                "height": 2000,
                 "mime": "image/webp",
-                "bytes": 165614
+                "bytes": 185922
             }
         ],
         "09-datas-sazonais": [
@@ -418,6 +426,14 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "height": 1086,
                 "mime": "image/webp",
                 "bytes": 124544
+            },
+            {
+                "file": "06.webp",
+                "src": "assets/portfolio/carrossel/09-datas-sazonais/06.webp?v=caa9a18f03f4",
+                "width": 901,
+                "height": 2000,
+                "mime": "image/webp",
+                "bytes": 56426
             }
         ]
     },

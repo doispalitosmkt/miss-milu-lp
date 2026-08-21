@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "miss-milu-lp",
-      "runtimeExecutable": "python",
+      "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "3456", "--directory", "lp"],
       "port": 3456
     }
