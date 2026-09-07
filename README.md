@@ -12,7 +12,6 @@ miss-milu-lp/
     ├── script.js
     ├── .htaccess            # legado (Apache/Hostinger), ignorado por GitHub/Cloudflare Pages
     ├── _headers             # cabeçalhos de cache/segurança para o Cloudflare Pages
-    ├── CNAME                # domínio customizado do GitHub Pages
     └── assets/              # imagens, logos e portfólio (WebP)
 ```
 
@@ -25,6 +24,12 @@ HTML/CSS/JS puro, sem build. A pasta publicada é `lp/`.
 [`cloudflare-pages.yml`](.github/workflows/cloudflare-pages.yml) a cada push em
 `main` que altere a landing page. URL atual:
 https://miss-milu-lp-7q8.pages.dev/.
+
+O domínio canônico preparado para produção é `https://missmilu.com.br/`. A
+associação do domínio raiz e o redirecionamento de `www` devem ser configurados
+somente durante a virada de DNS, depois que a zona `missmilu.com.br` estiver na
+mesma conta Cloudflare do projeto Pages. Até lá, `lp.missmilu.com.br` permanece
+ativo em paralelo.
 
 O repositório precisa ter estes Actions secrets:
 
