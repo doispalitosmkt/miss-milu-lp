@@ -1,6 +1,6 @@
 window.MISS_MILU_PORTFOLIO_CATALOG = {
-    "version": "ebb089945d0c0cad",
-    "total": 144,
+    "version": "8afbe49d5f830c30",
+    "total": 161,
     "categories": {
         "01-corporativo": [
             {
@@ -360,14 +360,6 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "bytes": 57528
             },
             {
-                "file": "04.webp",
-                "src": "assets/portfolio/carrossel/03-confeitaria/04.webp?v=170d7e32a2c9",
-                "width": 1080,
-                "height": 1054,
-                "mime": "image/webp",
-                "bytes": 97278
-            },
-            {
                 "file": "20211220_125036.webp",
                 "src": "assets/portfolio/carrossel/03-confeitaria/20211220_125036.webp?v=63d0b1c1f330",
                 "width": 1448,
@@ -414,14 +406,6 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "height": 1086,
                 "mime": "image/webp",
                 "bytes": 75316
-            },
-            {
-                "file": "20240818_161208.webp",
-                "src": "assets/portfolio/carrossel/03-confeitaria/20240818_161208.webp?v=cbfdf65cc761",
-                "width": 1448,
-                "height": 1086,
-                "mime": "image/webp",
-                "bytes": 121458
             },
             {
                 "file": "20240818_161343.webp",
@@ -647,19 +631,19 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
         "06-padrinhos": [
             {
                 "file": "01.webp",
-                "src": "assets/portfolio/carrossel/06-padrinhos/01.webp?v=10c5917c0db9",
-                "width": 901,
-                "height": 2000,
+                "src": "assets/portfolio/carrossel/06-padrinhos/01.webp?v=4f9a7190ad8d",
+                "width": 1448,
+                "height": 1086,
                 "mime": "image/webp",
-                "bytes": 53142
+                "bytes": 33920
             },
             {
                 "file": "02.webp",
-                "src": "assets/portfolio/carrossel/06-padrinhos/02.webp?v=fb607072869b",
-                "width": 1125,
-                "height": 2000,
+                "src": "assets/portfolio/carrossel/06-padrinhos/02.webp?v=0f01ac7d1473",
+                "width": 1448,
+                "height": 1086,
                 "mime": "image/webp",
-                "bytes": 157378
+                "bytes": 105696
             },
             {
                 "file": "03.webp",
@@ -761,11 +745,11 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
             },
             {
                 "file": "20221031_154339.webp",
-                "src": "assets/portfolio/carrossel/07-velas-e-saboaria/20221031_154339.webp?v=58ffc01a0660",
+                "src": "assets/portfolio/carrossel/07-velas-e-saboaria/20221031_154339.webp?v=e06d190cb462",
                 "width": 1448,
                 "height": 1086,
                 "mime": "image/webp",
-                "bytes": 110782
+                "bytes": 122594
             },
             {
                 "file": "20221111_061104.webp",
@@ -896,6 +880,158 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "height": 1086,
                 "mime": "image/webp",
                 "bytes": 139742
+            },
+            {
+                "file": "20260826-01.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-01.webp?v=546bbdd16ea9",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 193428
+            },
+            {
+                "file": "20260826-02.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-02.webp?v=b1825a763f76",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 195656
+            },
+            {
+                "file": "20260826-03.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-03.webp?v=074406ee51b5",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 197436
+            },
+            {
+                "file": "20260826-04.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-04.webp?v=6ce2e12d9db6",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 175968
+            },
+            {
+                "file": "20260826-05.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-05.webp?v=e44c4418f651",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 159456
+            },
+            {
+                "file": "20260826-06.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-06.webp?v=d61ffbfcbb9b",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 218868
+            },
+            {
+                "file": "20260826-07.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-07.webp?v=b5ac1d7f1c5f",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 238064
+            },
+            {
+                "file": "20260826-08.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-08.webp?v=80efc992ab02",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 360110
+            },
+            {
+                "file": "20260826-09.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-09.webp?v=fee4ffe521c7",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 231316
+            },
+            {
+                "file": "20260826-10.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-10.webp?v=cd670012d917",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 247992
+            },
+            {
+                "file": "20260826-11.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-11.webp?v=ee2bc7ce1498",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 255366
+            },
+            {
+                "file": "20260826-12.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-12.webp?v=1e6ab94b251a",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 247854
+            },
+            {
+                "file": "20260826-13.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-13.webp?v=c1fd2cb3d8a5",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 224580
+            },
+            {
+                "file": "20260826-14.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-14.webp?v=8cd223892738",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 254768
+            },
+            {
+                "file": "20260826-15.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-15.webp?v=d8ad8d78ea61",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 237560
+            },
+            {
+                "file": "20260826-16.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-16.webp?v=3d2650c7db7a",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 226996
+            },
+            {
+                "file": "20260826-17.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-17.webp?v=8ceb58ac95ce",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 242886
+            },
+            {
+                "file": "20260826-18.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-18.webp?v=1e1e67198f12",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 214530
+            },
+            {
+                "file": "20260826-19.webp",
+                "src": "assets/portfolio/carrossel/08-casinhas/20260826-19.webp?v=70454dce5c36",
+                "width": 1448,
+                "height": 1086,
+                "mime": "image/webp",
+                "bytes": 235292
             }
         ],
         "09-datas-sazonais": [
