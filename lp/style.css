@@ -511,13 +511,15 @@ textarea:focus-visible {
 .produto-inner {
   display: grid;
   min-height: 760px;
-  grid-template-columns: minmax(0, 1.08fr) minmax(480px, 0.92fr);
+  grid-template-columns: minmax(0, 0.8fr) minmax(480px, 1.2fr);
 }
 
 .produto-visual {
   position: relative;
   display: block;
+  align-self: start;
   min-height: 760px;
+  aspect-ratio: 9 / 16;
   overflow: hidden;
   background: var(--rose-soft);
 }
@@ -1898,7 +1900,7 @@ body.capture-mode .faq-header {
   }
 
   .produto-inner {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.8fr 1fr;
   }
 
   .produto-conteudo {
@@ -2119,7 +2121,8 @@ body.capture-mode .faq-header {
 
   .produto-visual {
     min-height: 0;
-    height: calc(66.667vw + 60px);
+    height: auto;
+    aspect-ratio: 9 / 16;
   }
 
   .produto-conteudo {
