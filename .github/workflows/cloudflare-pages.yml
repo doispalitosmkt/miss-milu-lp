@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "lp/**"
+      - "functions/**"
       - ".github/workflows/cloudflare-pages.yml"
   workflow_dispatch:
 

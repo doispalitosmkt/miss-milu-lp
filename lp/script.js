@@ -335,13 +335,17 @@ var missMiluPortfolio = (function () {
 })();
 
 
-/* === FORMULARIO: envia para WhatsApp === */
+/* === FORMULARIO: registra no RD Station CRM e abre o WhatsApp === */
 (function () {
   const form = document.getElementById('orcamento-form');
   if (!form) return;
 
+  let submitting = false;
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+
+    if (submitting) return;
 
     const nome      = (document.getElementById('nome').value      || '').trim();
     const empresa   = (document.getElementById('empresa').value   || '').trim();
@@ -373,6 +377,58 @@ var missMiluPortfolio = (function () {
 
     const mensagem = linhas.join('\n');
     const url = 'https://wa.me/5511981628872?text=' + encodeURIComponent(mensagem);
+
+    const params = new URLSearchParams(window.location.search);
+    const submitButton = form.querySelector('button[type="submit"]');
+    const lead = {
+      nome: nome,
+      empresa: empresa,
+      whatsapp: whatsapp,
+      segmento: segmento,
+      quantidade: quantidade,
+      descricao: descricao,
+      website: (document.getElementById('website').value || '').trim(),
+      pageUrl: window.location.href,
+      utmSource: params.get('utm_source') || '',
+      utmMedium: params.get('utm_medium') || '',
+      utmCampaign: params.get('utm_campaign') || '',
+      utmTerm: params.get('utm_term') || '',
+    };
+
+    submitting = true;
+    submitButton.disabled = true;
+    submitButton.setAttribute('aria-busy', 'true');
+
+    fetch('/api/rd-crm-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(lead),
+      keepalive: true,
+    })
+      .then(function (response) {
+        if (!response.ok) throw new Error('RD Station CRM: HTTP ' + response.status);
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'generate_lead',
+          lead_destination: 'rd_station_crm',
+          conversion_identifier: 'orcamento-site-miss-milu',
+        });
+        form.reset();
+      })
+      .catch(function (error) {
+        console.error('Não foi possível registrar o lead no RD Station CRM.', error);
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'lead_error',
+          lead_destination: 'rd_station_crm',
+        });
+      })
+      .finally(function () {
+        submitting = false;
+        submitButton.disabled = false;
+        submitButton.removeAttribute('aria-busy');
+      });
 
     window.open(url, '_blank', 'noopener');
   });

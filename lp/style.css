@@ -1452,6 +1452,14 @@ textarea:focus-visible {
   box-shadow: 0 26px 80px rgba(0, 0, 0, 0.18);
 }
 
+.form-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1532,6 +1540,12 @@ textarea:focus-visible {
 .form-submit:hover {
   background: var(--salmon-deeper);
   transform: translateY(-2px);
+}
+
+.form-submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
 }
 
 .form-disclaimer {

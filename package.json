@@ -1,0 +1,8 @@
+{
+  "name": "miss-milu-lp",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/rd-crm-lead.test.js"
+  }
+}
