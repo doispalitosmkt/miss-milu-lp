@@ -1,6 +1,6 @@
 window.MISS_MILU_PORTFOLIO_CATALOG = {
-    "version": "c0603119ea3c30ca",
-    "total": 159,
+    "version": "bce0dff8f07f5426",
+    "total": 158,
     "categories": {
         "01-corporativo": [
             {
@@ -42,14 +42,6 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "height": 1086,
                 "mime": "image/webp",
                 "bytes": 52142
-            },
-            {
-                "file": "20210907_173214.webp",
-                "src": "assets/portfolio/carrossel/01-corporativo/20210907_173214.webp?v=561aa4608b10",
-                "width": 1440,
-                "height": 1080,
-                "mime": "image/webp",
-                "bytes": 79594
             },
             {
                 "file": "20220414_184115.webp",
