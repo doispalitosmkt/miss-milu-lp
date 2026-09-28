@@ -1,6 +1,6 @@
 window.MISS_MILU_PORTFOLIO_CATALOG = {
-    "version": "bce0dff8f07f5426",
-    "total": 158,
+    "version": "af361d0703397551",
+    "total": 152,
     "categories": {
         "01-corporativo": [
             {
@@ -286,14 +286,6 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "bytes": 74498
             },
             {
-                "file": "20240906_170933.webp",
-                "src": "assets/portfolio/carrossel/02-arquitetos/20240906_170933.webp?v=c8d11fb7f1a2",
-                "width": 1448,
-                "height": 1086,
-                "mime": "image/webp",
-                "bytes": 82828
-            },
-            {
                 "file": "20240906_171909.webp",
                 "src": "assets/portfolio/carrossel/02-arquitetos/20240906_171909.webp?v=ddd4ff95482f",
                 "width": 1448,
@@ -358,14 +350,6 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "height": 1281,
                 "mime": "image/webp",
                 "bytes": 57528
-            },
-            {
-                "file": "20211220_125036.webp",
-                "src": "assets/portfolio/carrossel/03-confeitaria/20211220_125036.webp?v=049f67889fd9",
-                "width": 1440,
-                "height": 1080,
-                "mime": "image/webp",
-                "bytes": 193702
             },
             {
                 "file": "20220629_073915.webp",
@@ -514,14 +498,6 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "bytes": 152272
             },
             {
-                "file": "06.webp",
-                "src": "assets/portfolio/carrossel/04-cestas-e-cafe/06.webp?v=e91c6d58cdee",
-                "width": 1448,
-                "height": 1086,
-                "mime": "image/webp",
-                "bytes": 111222
-            },
-            {
                 "file": "20220501_134626.webp",
                 "src": "assets/portfolio/carrossel/04-cestas-e-cafe/20220501_134626.webp?v=af6df2bd0493",
                 "width": 1448,
@@ -544,14 +520,6 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "height": 1086,
                 "mime": "image/webp",
                 "bytes": 51420
-            },
-            {
-                "file": "IGCA_CES_06.webp",
-                "src": "assets/portfolio/carrossel/04-cestas-e-cafe/IGCA_CES_06.webp?v=feb52d24ecb5",
-                "width": 1440,
-                "height": 1080,
-                "mime": "image/webp",
-                "bytes": 210962
             },
             {
                 "file": "SOUL_CES_03.webp",
@@ -660,14 +628,6 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "height": 1086,
                 "mime": "image/webp",
                 "bytes": 102566
-            },
-            {
-                "file": "20211203_160249.webp",
-                "src": "assets/portfolio/carrossel/06-padrinhos/20211203_160249.webp?v=7806226f3851",
-                "width": 1448,
-                "height": 1086,
-                "mime": "image/webp",
-                "bytes": 108598
             }
         ],
         "07-velas-e-saboaria": [
@@ -702,14 +662,6 @@ window.MISS_MILU_PORTFOLIO_CATALOG = {
                 "height": 1080,
                 "mime": "image/webp",
                 "bytes": 90176
-            },
-            {
-                "file": "05.webp",
-                "src": "assets/portfolio/carrossel/07-velas-e-saboaria/05.webp?v=0b6756e8db1f",
-                "width": 1440,
-                "height": 1080,
-                "mime": "image/webp",
-                "bytes": 90354
             },
             {
                 "file": "06.webp",

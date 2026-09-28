@@ -22,6 +22,14 @@ $categoryIds = [
     '09-datas-sazonais',
 ];
 
+$hiddenImages = [
+    '02-arquitetos' => ['20240906_170933.webp' => true],
+    '03-confeitaria' => ['20211220_125036.webp' => true],
+    '04-cestas-e-cafe' => ['06.webp' => true, 'IGCA_CES_06.webp' => true],
+    '06-padrinhos' => ['20211203_160249.webp' => true],
+    '07-velas-e-saboaria' => ['05.webp' => true],
+];
+
 $allowedMimeTypes = [
     'webp' => ['image/webp'],
     'jpg' => ['image/jpeg'],
@@ -57,7 +65,8 @@ foreach ($categoryIds as $categoryId) {
     }
 
     foreach ($files as $fileName) {
-        if ($fileName === '.' || $fileName === '..' || str_starts_with($fileName, '.')) {
+        if ($fileName === '.' || $fileName === '..' || str_starts_with($fileName, '.')
+            || isset($hiddenImages[$categoryId][$fileName])) {
             continue;
         }
 
