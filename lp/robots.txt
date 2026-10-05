@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://missmilu.com.br/sitemap.xml
