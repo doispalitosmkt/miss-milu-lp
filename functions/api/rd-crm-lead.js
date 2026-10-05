@@ -137,6 +137,7 @@ function buildNote(lead) {
     'Lead recebido pelo formulário da landing page Miss Milú.',
     '',
     'Nome: ' + lead.nome,
+    'E-mail: ' + lead.email,
     'Empresa: ' + lead.empresa,
     'WhatsApp: ' + lead.whatsapp,
     'Segmento: ' + lead.segmento,
@@ -167,6 +168,7 @@ export async function createLeadInCrm(lead, token, fetchImpl = fetch) {
     contacts: [
       {
         name: lead.nome,
+        emails: [{ email: lead.email }],
         phones: [{ phone: lead.phoneDigits, type: 'cellphone' }],
         legal_bases: [
           { category: 'data_processing', type: 'consent', status: 'granted' },
@@ -235,6 +237,7 @@ export async function handleLeadRequest(request, env, fetchImpl = fetch) {
 
   const lead = {
     nome: cleanText(body.nome, 120),
+    email: cleanText(body.email, 254).toLowerCase(),
     empresa: cleanText(body.empresa, 160),
     whatsapp: cleanText(body.whatsapp, 40),
     segmento: cleanText(body.segmento, 120),
@@ -248,7 +251,8 @@ export async function handleLeadRequest(request, env, fetchImpl = fetch) {
     phoneDigits: normalizePhone(body.whatsapp),
   };
 
-  if (!lead.nome || !lead.empresa || !lead.phoneDigits || !lead.segmento || !lead.quantidade) {
+  if (!lead.nome || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email) || !lead.empresa ||
+      !lead.phoneDigits || !lead.segmento || !lead.quantidade) {
     return jsonResponse({ ok: false, error: 'Preencha corretamente os campos obrigatórios.' }, 400);
   }
 

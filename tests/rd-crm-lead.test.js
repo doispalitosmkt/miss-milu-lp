@@ -16,6 +16,7 @@ function makeRequest(body, options = {}) {
 
 const validLead = {
   nome: 'Maria da Silva',
+  email: 'maria@exemplo.com',
   empresa: 'Empresa Exemplo',
   whatsapp: '(11) 99999-9999',
   segmento: 'Corporativo',
@@ -39,6 +40,22 @@ test('rejeita requisições de outra origem', async () => {
 test('rejeita telefone brasileiro inválido', async () => {
   const response = await handleLeadRequest(
     makeRequest({ ...validLead, whatsapp: '123' }),
+    { RD_CRM_TOKEN: 'test-token' },
+  );
+  assert.equal(response.status, 400);
+});
+
+test('rejeita e-mail inválido', async () => {
+  const response = await handleLeadRequest(
+    makeRequest({ ...validLead, email: 'invalido' }),
+    { RD_CRM_TOKEN: 'test-token' },
+  );
+  assert.equal(response.status, 400);
+});
+
+test('exige e-mail', async () => {
+  const response = await handleLeadRequest(
+    makeRequest({ ...validLead, email: '' }),
     { RD_CRM_TOKEN: 'test-token' },
   );
   assert.equal(response.status, 400);
@@ -100,10 +117,12 @@ test('cria empresa, negociação, contato e anotação no RD CRM', async () => {
   const dealCall = calls[2];
   assert.equal(dealCall.body.organization._id, 'organization-1');
   assert.equal(dealCall.body.contacts[0].name, 'Maria da Silva');
+  assert.equal(dealCall.body.contacts[0].emails[0].email, 'maria@exemplo.com');
   assert.equal(dealCall.body.contacts[0].phones[0].phone, '11999999999');
 
   const activityCall = calls[3];
   assert.equal(activityCall.body.activity.deal_id, 'deal-1');
+  assert.match(activityCall.body.activity.text, /maria@exemplo\.com/);
   assert.match(activityCall.body.activity.text, /50 a 100 unidades/);
   assert.match(activityCall.body.activity.text, /utm_source=google/);
 });

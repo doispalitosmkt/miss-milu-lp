@@ -348,6 +348,7 @@ var missMiluPortfolio = (function () {
     if (submitting) return;
 
     const nome      = (document.getElementById('nome').value      || '').trim();
+    const email     = (document.getElementById('email').value     || '').trim();
     const empresa   = (document.getElementById('empresa').value   || '').trim();
     const whatsapp  = (document.getElementById('whatsapp').value  || '').trim();
     const segmento  = (document.getElementById('segmento').value  || '').trim();
@@ -355,8 +356,12 @@ var missMiluPortfolio = (function () {
     const descricao = (document.getElementById('descricao').value || '').trim();
 
     /* Validacao basica */
-    if (!nome || !empresa || !whatsapp || !segmento || !quantidade) {
+    if (!nome || !email || !empresa || !whatsapp || !segmento || !quantidade) {
       alert('Por favor, preencha todos os campos obrigatorios.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Por favor, informe um e-mail válido.');
       return;
     }
 
@@ -364,6 +369,7 @@ var missMiluPortfolio = (function () {
       'Ola! Tenho interesse em um orcamento da Miss Milu.',
       '',
       'Nome: ' + nome,
+      'E-mail: ' + email,
       'Empresa: ' + empresa,
       'WhatsApp: ' + whatsapp,
       'Segmento: ' + segmento,
@@ -382,6 +388,7 @@ var missMiluPortfolio = (function () {
     const submitButton = form.querySelector('button[type="submit"]');
     const lead = {
       nome: nome,
+      email: email,
       empresa: empresa,
       whatsapp: whatsapp,
       segmento: segmento,
