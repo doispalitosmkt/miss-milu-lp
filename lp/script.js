@@ -415,6 +415,9 @@ var missMiluPortfolio = (function () {
       .then(function (response) {
         if (!response.ok) throw new Error('RD Station CRM: HTTP ' + response.status);
 
+        // O honeypot responde 200 sem criar um lead; só 201 confirma a criação no CRM.
+        if (response.status !== 201) return;
+
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: 'generate_lead',
