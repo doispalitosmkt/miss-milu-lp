@@ -1,0 +1,14 @@
+# Miss Milú
+
+> A Miss Milú cria caixas rígidas cartonadas, semirrígidas e embalagens personalizadas para empresas. Os projetos são acompanhados por Luciana Kawano e podem ser entregues em todo o Brasil.
+
+Este é o site oficial da Miss Milú. Ele apresenta os serviços, o portfólio e um formulário para solicitar orçamento. Não é uma loja virtual com preços fixos: as condições dependem das características de cada projeto.
+
+## Conteúdo principal
+
+- [Soluções e tipos de projeto](https://missmilu.com.br/#produto): caixas personalizadas, press kits, brindes e gifts especiais.
+- [Portfólio](https://missmilu.com.br/#projetos): exemplos de trabalhos para diferentes segmentos.
+- [Sobre Luciana Kawano](https://missmilu.com.br/#autoria): trajetória da fundadora e abordagem de criação.
+- [Como funciona](https://missmilu.com.br/#processo): etapas do contato inicial à produção e entrega.
+- [Perguntas frequentes](https://missmilu.com.br/#faq): informações sobre quantidades, prazos, orçamento, materiais e entrega.
+- [Solicitar orçamento](https://missmilu.com.br/#formulario): formulário de contato para projetos personalizados.
