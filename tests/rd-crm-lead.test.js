@@ -112,9 +112,11 @@ test('cria empresa, negociação, contato e anotação no RD CRM', async () => {
 
   const organizationCall = calls[1];
   assert.equal(organizationCall.body.organization.name, 'Empresa Exemplo');
+  assert.equal(organizationCall.body.organization.user_id, '605e838dc646060015798079');
   assert.deepEqual(organizationCall.body.organization.organization_segments, ['Corporativo']);
 
   const dealCall = calls[2];
+  assert.equal(dealCall.body.deal.user_id, '605e838dc646060015798079');
   assert.equal(dealCall.body.organization._id, 'organization-1');
   assert.equal(dealCall.body.contacts[0].name, 'Maria da Silva');
   assert.equal(dealCall.body.contacts[0].emails[0].email, 'maria@exemplo.com');

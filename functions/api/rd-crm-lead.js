@@ -1,4 +1,5 @@
 const CRM_API_BASE = 'https://crm.rdstation.com/api/v1';
+const CRM_LEAD_OWNER_ID = '605e838dc646060015798079'; // Luciana Kawano
 
 class CrmRequestError extends Error {
   constructor(status, message) {
@@ -107,6 +108,7 @@ async function getOrCreateOrganization(lead, token, fetchImpl) {
       body: {
         organization: {
           name: lead.empresa,
+          user_id: CRM_LEAD_OWNER_ID,
           organization_segments: [lead.segmento],
           resume: cleanText(
             'Empresa cadastrada automaticamente pelo formulário de orçamento da landing page Miss Milú.' +
@@ -164,7 +166,7 @@ export async function createLeadInCrm(lead, token, fetchImpl = fetch) {
     200,
   );
   const dealPayload = {
-    deal: { name: dealName },
+    deal: { name: dealName, user_id: CRM_LEAD_OWNER_ID },
     contacts: [
       {
         name: lead.nome,
