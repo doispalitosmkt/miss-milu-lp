@@ -788,6 +788,13 @@ textarea:focus-visible {
   height: 28px;
 }
 
+@media (min-width: 801px) and (max-width: 1400px) {
+  .facilidades-botanico {
+    left: -100px;
+    width: calc(100% + 100px);
+  }
+}
+
 /* Portfolio */
 .portfolio {
   background: var(--cream);
