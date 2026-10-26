@@ -618,90 +618,174 @@ textarea:focus-visible {
 
 /* Facilidades */
 .facilidades {
-  padding: 0;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0 64px;
   background: var(--paper);
 }
 
-.facilidades-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.facilidade-item {
-  position: relative;
-  display: grid;
-  min-height: 255px;
-  grid-template-columns: 48px 1fr;
-  gap: 22px;
-  align-content: center;
-  padding: 54px 44px;
-}
-
-.facilidade-item:not(:last-child)::before {
+.facilidades-botanico {
   position: absolute;
-  top: 25%;
-  right: 0;
-  width: 1px;
-  height: 50%;
-  background: var(--line);
-  content: "";
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  pointer-events: none;
 }
 
-.facilidade-item:first-child {
-  padding-left: 0;
+.facilidades .container {
+  position: relative;
+  z-index: 1;
 }
 
-.facilidade-item:last-child {
-  padding-right: 0;
+.facilidades-layout {
+  display: grid;
+  min-height: 600px;
+  grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr);
+  gap: 35px;
+  padding-left: 110px;
 }
 
-.facilidade-icon {
+.facilidades-quantidade {
+  position: relative;
+}
+
+.facilidades-ornamento {
   display: flex;
-  width: 46px;
-  height: 46px;
+  height: 32px;
   align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(238, 104, 108, 0.45);
-  border-radius: 50%;
+  gap: 30px;
+  margin-left: -90px;
   color: var(--rose);
 }
 
-.facilidade-icon svg {
-  width: 20px;
-  height: 20px;
-  stroke-width: 1.5;
+.facilidades-ornamento span {
+  width: 60px;
+  height: 1px;
+  background: currentColor;
 }
 
-.facilidade-text strong {
-  display: block;
-  margin-bottom: 10px;
+.facilidades-ornamento svg {
+  width: 27px;
+  height: 27px;
+}
+
+.facilidades-quantidade h2 {
+  margin: 28px 0 44px;
   color: var(--navy);
   font-family: var(--font-heading);
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 1.05;
+  font-size: clamp(54px, 5vw, 76px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
 }
 
-.facilidade-text span,
-.facilidade-list {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.facilidade-list {
+.facilidades-regras {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.facilidade-list li + li {
-  margin-top: 4px;
+.facilidades-regras li {
+  min-height: 190px;
+  padding: 0 28px 30px 0;
 }
 
-.facilidade-list b {
-  color: var(--ink);
-  font-weight: 600;
+.facilidades-regras li:nth-child(even) {
+  padding-left: 36px;
+  padding-right: 0;
+  border-left: 1px solid rgba(232, 106, 110, 0.24);
+}
+
+.facilidades-regras li:nth-child(n + 3) {
+  padding-top: 24px;
+  border-top: 1px solid rgba(232, 106, 110, 0.24);
+}
+
+.facilidades-numero {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(232, 106, 110, 0.5);
+  color: var(--salmon-deeper);
+  font-family: var(--font-heading);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.facilidades-regras h3,
+.facilidades-beneficio h3 {
+  margin: 0;
+  color: var(--navy);
+  font-family: var(--font-heading);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.facilidades-regras li:nth-child(2) h3 {
+  font-size: 28px;
+}
+
+.facilidades-beneficio h3 {
+  font-size: 33px;
+}
+
+.facilidades-beneficio:last-child h3 {
+  font-size: 30px;
+}
+
+.facilidades-regras p,
+.facilidades-beneficio p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.facilidades-beneficio p {
+  max-width: 360px;
+  font-size: 17px;
+}
+
+.facilidades-beneficios {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 68px;
+  padding: 54px 0 0 68px;
+  border-left: 1px solid rgba(232, 106, 110, 0.24);
+}
+
+.facilidades-beneficio:not(:last-child)::after {
+  display: block;
+  width: 60px;
+  height: 1px;
+  margin-top: 38px;
+  background: var(--rose);
+  content: "";
+}
+
+.facilidades-beneficio-icon {
+  display: flex;
+  width: 76px;
+  height: 76px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  border: 2px solid rgba(232, 106, 110, 0.32);
+  border-radius: 50%;
+  color: var(--rose);
+}
+
+.facilidades-beneficio-icon svg {
+  width: 28px;
+  height: 28px;
 }
 
 /* Portfolio */
@@ -1932,16 +2016,19 @@ body.capture-mode .faq-header {
     border-right: 0;
   }
 
-  .facilidade-item {
-    padding: 44px 26px;
+  .facilidades-layout {
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+    gap: 28px;
+    padding-left: 55px;
   }
 
-  .facilidade-item:first-child {
-    padding-left: 0;
+  .facilidades-beneficios {
+    padding-left: 34px;
   }
 
-  .facilidade-item:last-child {
-    padding-right: 0;
+  .facilidades-regras h3,
+  .facilidades-beneficio h3 {
+    font-size: 26px;
   }
 
   .portfolio-showcase {
@@ -2155,19 +2242,39 @@ body.capture-mode .faq-header {
     display: none;
   }
 
-  .facilidades-grid {
-    grid-template-columns: 1fr;
+  .facilidades {
+    padding: 76px 0;
   }
 
-  .facilidade-item,
-  .facilidade-item:first-child,
-  .facilidade-item:last-child {
+  .facilidades-botanico {
+    display: none;
+  }
+
+  .facilidades-layout {
     min-height: 0;
-    padding: 36px 0;
-    border-right: 0;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding-left: 0;
   }
 
-  .facilidade-item:not(:last-child)::before {
+  .facilidades-ornamento {
+    margin-left: 0;
+  }
+
+  .facilidades-quantidade h2 {
+    margin-top: 20px;
+  }
+
+  .facilidades-beneficios {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    padding: 42px 0 0;
+    border-top: 1px solid rgba(232, 106, 110, 0.24);
+    border-left: 0;
+  }
+
+  .facilidades-beneficio:not(:last-child)::after {
     display: none;
   }
 
@@ -2393,6 +2500,49 @@ body.capture-mode .faq-header {
   }
 }
 
+@media (max-width: 600px) {
+  .facilidades {
+    padding: 62px 0 68px;
+  }
+
+  .facilidades-quantidade h2 {
+    margin-bottom: 34px;
+    font-size: clamp(46px, 12vw, 60px);
+  }
+
+  .facilidades-regras {
+    grid-template-columns: 1fr;
+  }
+
+  .facilidades-regras li,
+  .facilidades-regras li:nth-child(even),
+  .facilidades-regras li:nth-child(n + 3) {
+    min-height: 0;
+    padding: 22px 0;
+    border-top: 1px solid rgba(232, 106, 110, 0.24);
+    border-left: 0;
+  }
+
+  .facilidades-regras h3 {
+    font-size: 28px;
+  }
+
+  .facilidades-beneficios {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .facilidades-beneficio:not(:last-child)::after {
+    display: block;
+    margin-top: 28px;
+  }
+
+  .facilidades-beneficio-icon {
+    width: 64px;
+    height: 64px;
+  }
+}
+
 @media (max-width: 420px) {
   .container {
     width: min(calc(100% - 28px), var(--container));
@@ -2419,20 +2569,6 @@ body.capture-mode .faq-header {
 
   .hero-logo-carousel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .facilidade-item {
-    grid-template-columns: 42px 1fr;
-    gap: 17px;
-  }
-
-  .facilidade-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .facilidade-text strong {
-    font-size: 23px;
   }
 
   .portfolio-filtro {
