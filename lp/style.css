@@ -618,180 +618,462 @@ textarea:focus-visible {
 
 /* Facilidades */
 .facilidades {
-  position: relative;
-  overflow: hidden;
-  padding: 80px 0 64px;
   background: var(--paper);
-}
-
-.facilidades-botanico {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: left center;
-  pointer-events: none;
-}
-
-.facilidades .container {
-  position: relative;
-  z-index: 1;
+  scroll-margin-top: 84px;
 }
 
 .facilidades-layout {
   display: grid;
-  min-height: 600px;
-  grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr);
-  gap: 35px;
-  padding-left: 110px;
+  min-height: 776px;
+  grid-template-columns: minmax(0, 36.1%) minmax(0, 1fr);
+}
+
+.facilidades-cuidado {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 40px 70px clamp(42px, 4.75vw, 76px);
+  background: var(--navy);
+  color: var(--white);
+}
+
+.facilidades-cuidado-conteudo {
+  position: relative;
+  z-index: 1;
+  max-width: 460px;
+}
+
+.facilidades-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 0 0 22px;
+  color: #bd7863;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.facilidades-eyebrow::after {
+  display: block;
+  width: 72px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.facilidades-cuidado h2,
+.facilidades-quantidade h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.facilidades-cuidado h2 {
+  margin-bottom: 64px;
+  font-size: clamp(62px, 5vw, 82px);
+  line-height: 0.98;
+}
+
+.facilidades-beneficios {
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+}
+
+.facilidades-beneficio {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.facilidades-beneficio-icon {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  place-items: center;
+  border: 1.5px solid #c5846b;
+  border-radius: 50%;
+  color: #d18b74;
+}
+
+.facilidades-beneficio-icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.facilidades-beneficio-texto {
+  min-height: 76px;
+  padding-left: 24px;
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.facilidades-beneficio h3 {
+  margin: 0 0 7px;
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 31px;
+  font-weight: 500;
+  line-height: 1.06;
+}
+
+.facilidades-beneficio p {
+  margin: 0;
+  color: #d1d5d8;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.facilidades-folhas {
+  position: absolute;
+  z-index: 0;
+  bottom: -110px;
+  left: -50px;
+  width: 580px;
+  height: auto;
+  max-width: none;
+  opacity: 0.34;
+  pointer-events: none;
 }
 
 .facilidades-quantidade {
-  position: relative;
-}
-
-.facilidades-ornamento {
-  display: flex;
-  height: 32px;
-  align-items: center;
-  gap: 30px;
-  margin-left: -90px;
-  color: var(--rose);
-}
-
-.facilidades-ornamento span {
-  width: 60px;
-  height: 1px;
-  background: currentColor;
-}
-
-.facilidades-ornamento svg {
-  width: 27px;
-  height: 27px;
+  padding: 108px clamp(42px, 3.5vw, 56px) 45px clamp(50px, 4.65vw, 74px);
 }
 
 .facilidades-quantidade h2 {
-  margin: 28px 0 44px;
+  margin-bottom: 43px;
   color: var(--navy);
-  font-family: var(--font-heading);
-  font-size: clamp(54px, 5vw, 76px);
-  font-weight: 400;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
+  font-size: clamp(62px, 5vw, 80px);
+  line-height: 0.98;
 }
 
 .facilidades-regras {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .facilidades-regras li {
-  min-height: 190px;
-  padding: 0 28px 30px 0;
+  display: grid;
+  min-height: 122px;
+  grid-template-columns: minmax(0, 52%) minmax(0, 48%);
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(28, 46, 67, 0.15);
 }
 
-.facilidades-regras li:nth-child(even) {
-  padding-left: 36px;
-  padding-right: 0;
-  border-left: 1px solid rgba(232, 106, 110, 0.24);
+.facilidades-regras li:first-child {
+  min-height: 95px;
 }
 
-.facilidades-regras li:nth-child(n + 3) {
-  padding-top: 24px;
-  border-top: 1px solid rgba(232, 106, 110, 0.24);
+.facilidades-regras li:nth-child(3) {
+  min-height: 173px;
 }
 
-.facilidades-numero {
-  display: inline-block;
-  margin-bottom: 14px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid rgba(232, 106, 110, 0.5);
-  color: var(--salmon-deeper);
-  font-family: var(--font-heading);
-  font-size: 21px;
-  font-weight: 500;
-  line-height: 1;
+.facilidades-regras li:last-child {
+  min-height: 109px;
+  border-bottom: 0;
 }
 
-.facilidades-regras h3,
-.facilidades-beneficio h3 {
+.facilidades-regras h3 {
   margin: 0;
+  padding: 4px 24px 4px 10px;
   color: var(--navy);
-  font-family: var(--font-heading);
-  font-size: 30px;
+  font-family: var(--font-body);
+  font-size: 22px;
   font-weight: 500;
+  line-height: 1.3;
+}
+
+.facilidades-valor {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+  margin: 0;
+  padding: 0 0 0 40px;
+  border-left: 1px solid rgba(28, 46, 67, 0.2);
+  color: #bd6e57;
+  font-family: var(--font-heading);
+  font-size: 38px;
   line-height: 1.08;
 }
 
-.facilidades-regras li:nth-child(2) h3 {
-  font-size: 28px;
-}
-
-.facilidades-beneficio h3 {
-  font-size: 33px;
-}
-
-.facilidades-beneficio:last-child h3 {
-  font-size: 30px;
-}
-
-.facilidades-regras p,
-.facilidades-beneficio p {
-  margin: 8px 0 0;
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.55;
-}
-
-.facilidades-beneficio p {
-  max-width: 360px;
-  font-size: 17px;
-}
-
-.facilidades-beneficios {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 68px;
-  padding: 54px 0 0 68px;
-  border-left: 1px solid rgba(232, 106, 110, 0.24);
-}
-
-.facilidades-beneficio:not(:last-child)::after {
+.facilidades-valor-detalhado {
   display: block;
-  width: 60px;
-  height: 1px;
-  margin-top: 38px;
-  background: var(--rose);
-  content: "";
+  align-content: center;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 21px;
+  line-height: 1.35;
 }
 
-.facilidades-beneficio-icon {
-  display: flex;
-  width: 76px;
-  height: 76px;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 18px;
-  border: 2px solid rgba(232, 106, 110, 0.32);
-  border-radius: 50%;
-  color: var(--rose);
+.facilidades-valor-detalhado span {
+  color: #bd6e57;
+  font-family: var(--font-heading);
+  font-size: 39px;
+  line-height: 0.9;
+  white-space: nowrap;
 }
 
-.facilidades-beneficio-icon svg {
-  width: 28px;
-  height: 28px;
+@media (max-width: 1400px) {
+  .facilidades-layout {
+    grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+  }
+
+  .facilidades-cuidado {
+    padding: 85px 30px 70px 55px;
+  }
+
+  .facilidades-cuidado h2 {
+    font-size: 70px;
+  }
+
+  .facilidades-beneficio {
+    grid-template-columns: 66px minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .facilidades-beneficio-icon {
+    width: 66px;
+    height: 66px;
+  }
+
+  .facilidades-beneficio-texto {
+    padding-left: 16px;
+  }
+
+  .facilidades-beneficio h3 {
+    font-size: 29px;
+  }
+
+  .facilidades-beneficio p {
+    font-size: 16.5px;
+  }
+
+  .facilidades-quantidade {
+    padding: 86px 38px 45px 54px;
+  }
+
+  .facilidades-quantidade h2 {
+    font-size: 70px;
+  }
+
+  .facilidades-regras h3 {
+    font-size: 20px;
+  }
+
+  .facilidades-valor {
+    padding-left: 28px;
+    font-size: 35px;
+  }
+
+  .facilidades-valor-detalhado {
+    font-size: 19px;
+  }
+
+  .facilidades-valor-detalhado span {
+    font-size: 36px;
+  }
 }
 
-@media (min-width: 801px) and (max-width: 1400px) {
-  .facilidades-botanico {
-    left: -100px;
-    width: calc(100% + 100px);
+@media (max-width: 1200px) {
+  .facilidades-layout {
+    grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+  }
+
+  .facilidades-cuidado {
+    padding: 78px 44px 70px;
+  }
+
+  .facilidades-cuidado h2 {
+    font-size: clamp(58px, 6vw, 72px);
+  }
+
+  .facilidades-beneficio {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .facilidades-beneficio-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .facilidades-beneficio-texto {
+    padding-left: 16px;
+  }
+
+  .facilidades-beneficio h3 {
+    font-size: 27px;
+  }
+
+  .facilidades-beneficio p {
+    font-size: 16px;
+  }
+
+  .facilidades-quantidade {
+    padding: 83px 40px 45px;
+  }
+
+  .facilidades-quantidade h2 {
+    font-size: 67px;
+  }
+
+  .facilidades-regras h3 {
+    font-size: 19px;
+  }
+
+  .facilidades-valor {
+    padding-left: 25px;
+    font-size: 32px;
+  }
+
+  .facilidades-valor-detalhado {
+    font-size: 17px;
+  }
+
+  .facilidades-valor-detalhado span {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .facilidades-layout {
+    min-height: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .facilidades-cuidado {
+    min-height: 560px;
+    padding: 70px 8% 80px;
+  }
+
+  .facilidades-cuidado h2 {
+    margin-bottom: 52px;
+  }
+
+  .facilidades-beneficios {
+    max-width: 600px;
+    gap: 32px;
+  }
+
+  .facilidades-folhas {
+    right: 0;
+    bottom: -170px;
+    left: auto;
+    width: 430px;
+  }
+
+  .facilidades-quantidade {
+    padding: 72px 8% 75px;
+  }
+
+  .facilidades-quantidade h2 {
+    font-size: clamp(56px, 8vw, 72px);
+  }
+
+  .facilidades-regras h3 {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 600px) {
+  .facilidades-cuidado {
+    min-height: 0;
+    padding: 58px 26px 72px;
+  }
+
+  .facilidades-eyebrow {
+    gap: 14px;
+    font-size: 12px;
+  }
+
+  .facilidades-eyebrow::after {
+    width: 45px;
+  }
+
+  .facilidades-cuidado h2 {
+    margin-bottom: 48px;
+    font-size: clamp(54px, 14vw, 70px);
+  }
+
+  .facilidades-beneficios {
+    gap: 36px;
+  }
+
+  .facilidades-beneficio {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 15px;
+  }
+
+  .facilidades-beneficio-icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .facilidades-beneficio-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .facilidades-beneficio-texto {
+    padding-left: 15px;
+  }
+
+  .facilidades-beneficio h3 {
+    font-size: 25px;
+  }
+
+  .facilidades-beneficio p {
+    font-size: 14px;
+  }
+
+  .facilidades-folhas {
+    right: -120px;
+    bottom: -180px;
+    width: 340px;
+  }
+
+  .facilidades-quantidade {
+    padding: 62px 26px 74px;
+  }
+
+  .facilidades-quantidade h2 {
+    margin-bottom: 28px;
+    font-size: clamp(50px, 12vw, 62px);
+  }
+
+  .facilidades-regras li,
+  .facilidades-regras li:first-child,
+  .facilidades-regras li:nth-child(3),
+  .facilidades-regras li:last-child {
+    display: block;
+    min-height: 0;
+    padding: 23px 0;
+  }
+
+  .facilidades-regras h3 {
+    margin-bottom: 15px;
+    padding: 0;
+    font-size: 17px;
+  }
+
+  .facilidades-valor {
+    min-height: 0;
+    padding-left: 14px;
+    font-size: 31px;
+  }
+
+  .facilidades-valor-detalhado {
+    font-size: 17px;
+  }
+
+  .facilidades-valor-detalhado span {
+    font-size: 32px;
   }
 }
 
@@ -2023,21 +2305,6 @@ body.capture-mode .faq-header {
     border-right: 0;
   }
 
-  .facilidades-layout {
-    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
-    gap: 28px;
-    padding-left: 55px;
-  }
-
-  .facilidades-beneficios {
-    padding-left: 34px;
-  }
-
-  .facilidades-regras h3,
-  .facilidades-beneficio h3 {
-    font-size: 26px;
-  }
-
   .portfolio-showcase {
     min-height: 570px;
     grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
@@ -2246,42 +2513,6 @@ body.capture-mode .faq-header {
   }
 
   .produto-card:nth-child(odd)::before {
-    display: none;
-  }
-
-  .facilidades {
-    padding: 76px 0;
-  }
-
-  .facilidades-botanico {
-    display: none;
-  }
-
-  .facilidades-layout {
-    min-height: 0;
-    grid-template-columns: 1fr;
-    gap: 50px;
-    padding-left: 0;
-  }
-
-  .facilidades-ornamento {
-    margin-left: 0;
-  }
-
-  .facilidades-quantidade h2 {
-    margin-top: 20px;
-  }
-
-  .facilidades-beneficios {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 30px;
-    padding: 42px 0 0;
-    border-top: 1px solid rgba(232, 106, 110, 0.24);
-    border-left: 0;
-  }
-
-  .facilidades-beneficio:not(:last-child)::after {
     display: none;
   }
 
@@ -2508,46 +2739,6 @@ body.capture-mode .faq-header {
 }
 
 @media (max-width: 600px) {
-  .facilidades {
-    padding: 62px 0 68px;
-  }
-
-  .facilidades-quantidade h2 {
-    margin-bottom: 34px;
-    font-size: clamp(46px, 12vw, 60px);
-  }
-
-  .facilidades-regras {
-    grid-template-columns: 1fr;
-  }
-
-  .facilidades-regras li,
-  .facilidades-regras li:nth-child(even),
-  .facilidades-regras li:nth-child(n + 3) {
-    min-height: 0;
-    padding: 22px 0;
-    border-top: 1px solid rgba(232, 106, 110, 0.24);
-    border-left: 0;
-  }
-
-  .facilidades-regras h3 {
-    font-size: 28px;
-  }
-
-  .facilidades-beneficios {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .facilidades-beneficio:not(:last-child)::after {
-    display: block;
-    margin-top: 28px;
-  }
-
-  .facilidades-beneficio-icon {
-    width: 64px;
-    height: 64px;
-  }
 }
 
 @media (max-width: 420px) {
