@@ -335,6 +335,36 @@ var missMiluPortfolio = (function () {
 })();
 
 
+/* === ATRIBUICAO: de onde o visitante veio (o CRM da agência usa para saber a origem do lead) === */
+/* Guarda só nesta aba (sessionStorage), sem dados pessoais: página de entrada, site de onde veio e horário.
+   Primeiro toque = primeira página da visita. Último toque = última chegada com campanha ou vinda de outro site. */
+(function () {
+  var CHAVE = 'mm_atribuicao_v1';
+  var CAMPANHA = /[?&](utm_[a-z]+|gclid|gbraid|wbraid|fbclid)=/i;
+
+  function externo(ref) {
+    try { return !!ref && new URL(ref).host !== window.location.host; } catch (e) { return false; }
+  }
+  function ler() {
+    try { return JSON.parse(window.sessionStorage.getItem(CHAVE) || 'null'); } catch (e) { return null; }
+  }
+
+  var agora = {
+    pagina: window.location.href,
+    veioDe: externo(document.referrer) ? document.referrer : '',
+    quando: new Date().toISOString(),
+  };
+  var dados = ler() || { primeiro: agora };
+  if (!dados.ultimo || CAMPANHA.test(window.location.search) || agora.veioDe) dados.ultimo = agora;
+  try { window.sessionStorage.setItem(CHAVE, JSON.stringify(dados)); } catch (e) { /* aba privada: segue sem guardar */ }
+
+  window.mmAtribuicao = function () {
+    var d = ler() || dados;
+    return { primeiro: d.primeiro, ultimo: d.ultimo, referrerDaPagina: document.referrer || '' };
+  };
+})();
+
+
 /* === FORMULARIO: registra no RD Station CRM e abre o WhatsApp === */
 (function () {
   const form = document.getElementById('orcamento-form');
@@ -395,6 +425,7 @@ var missMiluPortfolio = (function () {
       quantidade: quantidade,
       descricao: descricao,
       website: (document.getElementById('website').value || '').trim(),
+      atribuicao: typeof window.mmAtribuicao === 'function' ? window.mmAtribuicao() : null,
       pageUrl: window.location.href,
       utmSource: params.get('utm_source') || '',
       utmMedium: params.get('utm_medium') || '',
