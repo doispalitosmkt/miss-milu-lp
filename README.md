@@ -60,3 +60,18 @@ php assets/portfolio/catalogo.php --write
 ```
 
 Guia completo em [`lp/assets/portfolio/carrossel/README.md`](lp/assets/portfolio/carrossel/README.md).
+
+## Leads também no CRM da agência (Dois Palitos)
+
+O formulário continua igual para o visitante: cria a negociação no RD Station CRM e abre o WhatsApp.
+Em paralelo, a função `functions/api/rd-crm-lead.js` manda uma cópia do lead ao CRM da Dois Palitos
+(`integracoes/crm-2p.js`), onde a Miss Milú tem login próprio e vê só os leads dela.
+
+- Só envia se o segredo `LEAD_2P_SECRET` existir. Ele fica nos *Actions secrets* do repositório e é
+  copiado para o Cloudflare Pages a cada publicação (passo "Configure 2P CRM secret" do workflow).
+- Falha no CRM da agência nunca afeta o formulário nem o RD Station (envio paralelo, com tempo limite).
+- Envio assinado (HMAC) e com o mesmo ID em cada nova tentativa: reenviar não duplica o lead.
+- A origem do visitante (página de entrada, site de onde veio, UTMs, gclid) é guardada só na aba
+  (sessionStorage) pelo bloco `ATRIBUICAO` do `script.js`, sem dados pessoais.
+- Nome começando com `[TESTE]` marca o lead como teste (fica fora dos painéis).
+- Endereço: variável `LEAD_2P_URL` (padrão: ambiente de testes `https://api.stg.doispalitosmkt.com.br/v1/leads`).

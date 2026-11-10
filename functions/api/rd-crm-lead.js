@@ -1,3 +1,5 @@
+import { enviarLeadPara2p } from '../../integracoes/crm-2p.js';
+
 const CRM_API_BASE = 'https://crm.rdstation.com/api/v1';
 const CRM_LEAD_OWNER_ID = '605e838dc646060015798079'; // Luciana Kawano
 
@@ -212,7 +214,8 @@ export async function createLeadInCrm(lead, token, fetchImpl = fetch) {
   return { dealId, noteSaved };
 }
 
-export async function handleLeadRequest(request, env, fetchImpl = fetch) {
+// aguardar: função do Cloudflare (context.waitUntil) que mantém o envio paralelo ao CRM 2P vivo
+export async function handleLeadRequest(request, env, fetchImpl = fetch, aguardar = null) {
   if (request.method !== 'POST') {
     return jsonResponse({ ok: false, error: 'Método não permitido.' }, 405);
   }
@@ -258,6 +261,11 @@ export async function handleLeadRequest(request, env, fetchImpl = fetch) {
     return jsonResponse({ ok: false, error: 'Preencha corretamente os campos obrigatórios.' }, 400);
   }
 
+  // Cópia para o CRM da agência (2P): em paralelo, sem atrasar nem afetar o RD Station.
+  // Sem LEAD_2P_SECRET configurado, não faz nada.
+  const envio2p = enviarLeadPara2p(lead, body.atribuicao, env, fetchImpl);
+  if (typeof aguardar === 'function') aguardar(envio2p);
+
   const token = env && env.RD_CRM_TOKEN;
   if (!token) {
     return jsonResponse({ ok: false, error: 'Integração com o CRM indisponível.' }, 503);
@@ -273,5 +281,5 @@ export async function handleLeadRequest(request, env, fetchImpl = fetch) {
 }
 
 export async function onRequest(context) {
-  return handleLeadRequest(context.request, context.env);
+  return handleLeadRequest(context.request, context.env, fetch, (promessa) => context.waitUntil(promessa));
 }
